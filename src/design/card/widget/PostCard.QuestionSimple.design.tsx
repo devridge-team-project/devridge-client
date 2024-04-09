@@ -15,7 +15,7 @@ export default function PostCardQuestionSimpleDesign({
     container: {
       sizes: "w-full max-w-80 h-17.25",
       displays: "flex items-center gap-3.75",
-      test: "border-t-2 border-white-grey",
+      border: index !== 1 && "border-t-2 border-white-grey",
     },
     counter: {
       displays: "flex justify-center items-center",
