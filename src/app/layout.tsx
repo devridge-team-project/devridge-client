@@ -6,7 +6,7 @@ export default function RootLayout() {
   const container = {
     positions: "relative",
     sizes: "w-full min-h-screen",
-    styles: "font-pretendard",
+    styles: "font-pretendard-medium",
   };
 
   return (

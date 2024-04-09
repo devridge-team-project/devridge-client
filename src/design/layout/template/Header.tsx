@@ -24,7 +24,7 @@ export default function Header() {
     displays: "flex items-center",
     paddings: "px-6",
     sizes: " h-15 w-full",
-    styles: "bg-blue-grey text-white font-bold ",
+    styles: "bg-bright-purple text-white font-bold ",
   };
 
   return (
