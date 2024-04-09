@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { cn } from "@/util";
-import { Header } from "@/design";
+import { Events, Header, Overlay } from "@/design";
 
 export default function RootLayout() {
   const container = {
@@ -10,9 +10,11 @@ export default function RootLayout() {
   };
 
   return (
-    <div className={cn(container)}>
-      <Header />
-      <Outlet />
-    </div>
+    <Events.Show widgets={[["overlay", <Overlay />]]}>
+      <div className={cn(container)}>
+        <Header />
+        <Outlet />
+      </div>
+    </Events.Show>
   );
 }

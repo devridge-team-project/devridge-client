@@ -8,7 +8,7 @@ export default function Header() {
   const navigate = useNavigation();
   const location = useLocation().pathname;
 
-  const isLocated = location === "/qna";
+  const isLocated = location === "/questions" || location === "/communities";
   const container = {
     positions: "fixed top-0 left-0 z-40",
     displays: "flex flex-col ",
@@ -38,17 +38,25 @@ export default function Header() {
               className="w-28 h-5"
             />
           </button>
-          <button onClick={() => setView("sideMenu")}>
-            <img
-              src="/images/icons/hamburger-bar.svg"
-              alt="hamburger-bar"
-              className="w-7 h-7"
-            />
-          </button>
+          <img
+            onClick={() => setView("overlay")}
+            src="/images/icons/hamburger-bar.svg"
+            alt="hamburger-bar"
+            className="w-7 h-7 cursor-pointer"
+          />
         </div>
-        {isLocated ? <div className={cn(subHeader)}>개발 Q&A</div> : null}
+        {isLocated ? (
+          <div className={cn(subHeader)}>
+            {subHeaderString[location.split("/").join("")]}
+          </div>
+        ) : null}
       </div>
       <div className={isLocated ? "w-full h-35" : "w-full h-20"} />
     </>
   );
 }
+
+const subHeaderString = {
+  questions: "개발 Q&A",
+  communities: "커뮤니티",
+} as Record<string, string>;

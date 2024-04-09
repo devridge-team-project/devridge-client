@@ -12,6 +12,7 @@ function Show({ widgets, children }: ShowProps) {
           typeof flag === "boolean"
             ? flag
             : events?.some(({ event }) => event === flag);
+
         const event = () => {
           if (typeof flag === "string") {
             return flag;

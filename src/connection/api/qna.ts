@@ -1,22 +1,22 @@
 import httpRequest from "../axios";
-import { Qna, QnaById, QnaComment, QnaPost } from "@/interface/Qna";
+import { Question, QuestionDetail, Answer, QuestionPost } from "@/interface";
 
 const api = httpRequest.server;
 
 function getQnaAll(sortOption: "views" | "latest") {
-  return api.get<Qna[]>("/api/qna", { params: { sortOption } });
+  return api.get<Question[]>("/api/qna", { params: { sortOption } });
 }
 
 function getQna(id: number) {
-  return api.get<QnaById>(`/api/qna/${id}`);
+  return api.get<QuestionDetail>(`/api/qna/${id}`);
 }
 
-function postQna(data: QnaPost) {
+function postQna(data: QuestionPost) {
   return api.post("/api/qna", data);
 }
 
 function getComments(id: number) {
-  return api.get<QnaComment[]>(`/api/qna/${id}/comments`);
+  return api.get<Answer[]>(`/api/qna/${id}/comments`);
 }
 
 function postComments(id: number, data: object) {

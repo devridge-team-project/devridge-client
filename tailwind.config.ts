@@ -45,6 +45,7 @@ export default {
         50: "12.5rem",
         55: "13.75rem",
         62.5: "15.625rem",
+        67.5: "16.875rem",
         70: "17.5rem",
         76: "19rem",
         78: "19.5rem",
@@ -101,60 +102,9 @@ export default {
         500: "500ms",
       },
       backgroundImage: {
-        "image-bubble": "url('/public/images/home/bubble.png')",
-        "image-developer-man": "url('/public/images/home/developer-man.png')",
+        "image-bubble": "url('/images/home/bubble.png')",
+        "image-developer-man": "url('/images/home/developer-man.png')",
       },
     },
   },
-  safelist: [
-    {
-      pattern: /col-.*/,
-    },
-    {
-      pattern: /row-.*/,
-    },
-    {
-      pattern: /flex/,
-    },
-    {
-      pattern: /flex-.*/,
-    },
-    {
-      pattern: /justify-.*/,
-    },
-    {
-      pattern: /items-.*/,
-    },
-    {
-      pattern: /grid-.*/,
-    },
-    {
-      pattern: /gap-.*/,
-    },
-    {
-      pattern: /border-.*/,
-    },
-    { pattern: /w-.*/ },
-    { pattern: /h-.*/ },
-    {
-      pattern: /top*.*/,
-    },
-    {
-      pattern: /bottom*.*/,
-    },
-    {
-      pattern: /left*.*/,
-    },
-    {
-      pattern: /right*.*/,
-    },
-    { pattern: /bg-.*/ },
-    { pattern: /text-.*/ },
-    {
-      pattern: /p-.*/,
-    },
-    {
-      pattern: /scrollbar-.*/,
-    },
-  ],
 } satisfies Config;
