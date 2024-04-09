@@ -10,8 +10,12 @@ function Question() {
   return <PostCardQuestionDesign />;
 }
 
-function QuestionSimple() {
-  return <PostCardQuestionSimpleDesign />;
+interface PostCardQuestionSimple {
+  index: number;
+}
+
+function QuestionSimple({ index }: PostCardQuestionSimple) {
+  return <PostCardQuestionSimpleDesign index={index} />;
 }
 
 Question.Simple = QuestionSimple;
