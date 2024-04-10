@@ -3,7 +3,7 @@ import { communityApi } from "@/connection";
 import { useQueries } from "@tanstack/react-query";
 
 export default function CommunitiesPage() {
-  const [{ data: communityData }] = useQueries({
+  const [{ data: posts }] = useQueries({
     queries: [
       {
         queryKey: ["getCommunitiesPosts"],
@@ -11,5 +11,5 @@ export default function CommunitiesPage() {
       },
     ],
   });
-  return <Communities data={communityData} />;
+  return <Communities posts={posts} />;
 }

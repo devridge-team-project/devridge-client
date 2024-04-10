@@ -20,11 +20,10 @@ interface CommunityPageable {
   paged: boolean;
 }
 
-export interface CommunityContent {
+export interface Community {
   id: number;
   createdAt: string;
   updatedAt: string;
-
   title: string;
   content: string;
   viewCount: number;
@@ -32,18 +31,18 @@ export interface CommunityContent {
   dislikeCount: number;
   comments: number;
   member: Member;
-  hashtags: Hashtag[];
+  hashtags: Hashtag[] | null;
   scraps: number;
 }
 
-export interface Community {
-  content: CommunityContent[];
-  pageable: CommunityPageable;
-  size: number;
-  number: number;
-  sort: CommunitySort;
-  first: boolean;
-  last: boolean;
-  numberOfElements: number;
-  empty: boolean;
-}
+// interface CommunityDeprecated {
+//   content: Community[];
+//   pageable: CommunityPageable;
+//   size: number;
+//   number: number;
+//   sort: CommunitySort;
+//   first: boolean;
+//   last: boolean;
+//   numberOfElements: number;
+//   empty: boolean;
+// }

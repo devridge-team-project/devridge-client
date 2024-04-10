@@ -1,14 +1,14 @@
 import httpRequest from "../axios";
-import { Community, CommunityContent } from "@/interface";
+import { Community } from "@/interface";
 
 const api = httpRequest.server;
 
 function getCommunities() {
-  return api.get<Community>("/api/community");
+  return api.get<Community[]>("/api/community");
 }
 
 function getCommunity(id: number) {
-  return api.get<CommunityContent>(`/api/community/${id}`);
+  return api.get<Community>(`/api/community/${id}`);
 }
 
 const communityApi = {
