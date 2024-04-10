@@ -1,7 +1,15 @@
-import { QuestionById } from "@/interface";
+import { CommentCard } from "@/design";
+import { Answer, QuestionById } from "@/interface";
+import { Member } from "@/interface";
 import { cn } from "@/util";
 
-export default function Question({ post }: { post?: QuestionById }) {
+export default function Question({
+  post,
+  answers,
+}: {
+  post?: QuestionById;
+  answers?: Answer[];
+}) {
   const { title, member, content, views, likes, createdAt } = post ?? {};
   const container = {
     displays: "flex flex-col gap-2",
@@ -27,8 +35,8 @@ export default function Question({ post }: { post?: QuestionById }) {
   };
   const comment = {
     container: {
-      displays: "flex flex-col items-center",
-      paddings: "px-8",
+      displays: "flex flex-col items-center gap-2.5",
+      paddings: "pt-5 px-8",
       style: "bg-white",
     },
   };
@@ -69,7 +77,14 @@ export default function Question({ post }: { post?: QuestionById }) {
         </div>
       </div>
       <div className={cn(comment.container)}>COMMENT SECTION</div>
-      <div className={cn(comment.container)}>COMMENT SECTION</div>
+      <div className={cn(comment.container)}>
+        <div className="text-lg font-bold w-full max-w-120">
+          답변 {answers?.length ?? "0"}
+        </div>
+        {answers?.map((answer) => (
+          <CommentCard.Question {...answer} />
+        ))}
+      </div>
     </div>
   );
 }
