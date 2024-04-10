@@ -10,7 +10,7 @@ export interface Question {
   createdAt: string;
 }
 
-export interface QuestionDetail {
+export interface QuestionById {
   member: Member;
   title: string;
   content: string;

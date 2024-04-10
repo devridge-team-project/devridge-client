@@ -1,5 +1,5 @@
-import { Banner } from "@/components/home";
-import Qnas from "@/components/home/Qnas";
+import { Banner } from "@/components";
+import Qnas from "@/components/Qnas";
 import { cn } from "@/util";
 
 export default function RootPage() {

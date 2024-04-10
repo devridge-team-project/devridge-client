@@ -1,7 +1,9 @@
-import { PostCardQuestionProps } from "@/interface/Card";
+import { PostCardQuestionProps } from "@/interface";
 import { cn } from "@/util";
+import { Link } from "react-router-dom";
 
 export default function PostCardQuestionDesign({
+  id,
   title,
   content,
   views,
@@ -20,7 +22,7 @@ export default function PostCardQuestionDesign({
   };
   return (
     <div className={cn(container)}>
-      <div className={cn(body)}>
+      <Link to={`/questions/${id}`} className={cn(body)}>
         <div className="flex flex-col">
           <div className="text-xxs">{createdAt}</div>
           <div className="text-xs font-bold">{title}</div>
@@ -33,7 +35,7 @@ export default function PostCardQuestionDesign({
           </div>
           <div>추천 {likes}</div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 }

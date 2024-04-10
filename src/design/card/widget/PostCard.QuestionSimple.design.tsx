@@ -1,7 +1,9 @@
-import { PostCardQuestionSimpleProps } from "@/interface/Card";
+import { PostCardQuestionSimpleProps } from "@/interface";
 import { cn } from "@/util";
+import { Link } from "react-router-dom";
 
 export default function PostCardQuestionSimpleDesign({
+  id,
   index,
   title,
   views,
@@ -25,7 +27,7 @@ export default function PostCardQuestionSimpleDesign({
   };
   return (
     <div className={cn(container)}>
-      <div className={cn(body.container)}>
+      <Link to={`/questions/${id}`} className={cn(body.container)}>
         <div className={cn(body.counter)}>{index}</div>
         <div>
           <div className="text-xs font-bold">{title}</div>
@@ -33,7 +35,7 @@ export default function PostCardQuestionSimpleDesign({
             답변수 {commentCount} 조회수 {views}
           </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 }

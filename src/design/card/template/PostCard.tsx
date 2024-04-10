@@ -1,13 +1,14 @@
 import {
+  PostCardCommunityProps,
   PostCardQuestionProps,
   PostCardQuestionSimpleProps,
-} from "@/interface/Card";
+} from "@/interface";
 import PostCardCommunityDesign from "./../widget/PostCard.Community.design";
 import PostCardQuestionDesign from "./../widget/PostCard.Question.design";
 import PostCardQuestionSimpleDesign from "./../widget/PostCard.QuestionSimple.design";
 
-function Community() {
-  return <PostCardCommunityDesign />;
+function Community(props: PostCardCommunityProps) {
+  return <PostCardCommunityDesign {...props} />;
 }
 
 function Question(props: PostCardQuestionProps) {

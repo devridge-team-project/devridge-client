@@ -1,10 +1,34 @@
 import { useTransition, animated } from "react-spring";
 import { cn } from "@/util";
 import { useWidgetStore } from "@/shared/store";
+import { Link } from "react-router-dom";
 
 interface OverlayProps {
   isVisible?: boolean;
 }
+
+const links = [
+  {
+    name: "로그인",
+    href: "/sign-in",
+  },
+  {
+    name: "회원가입",
+    href: "/sign-up",
+  },
+  {
+    name: "마이페이지",
+    href: "/mypage",
+  },
+  {
+    name: "커뮤니티",
+    href: "/communities",
+  },
+  {
+    name: "Q&A",
+    href: "/questions",
+  },
+];
 
 export default function Overlay({ isVisible }: OverlayProps) {
   const { clearView } = useWidgetStore();
@@ -32,7 +56,11 @@ export default function Overlay({ isVisible }: OverlayProps) {
       item && (
         <animated.div style={styles} className={cn(container)}>
           <div className={cn(body)}>
-            <div>안녕하세요 반갑습니다</div>
+            {links.map(({ name, href }) => (
+              <Link key={href} to={href} onClick={clearView}>
+                {name}
+              </Link>
+            ))}
             <img
               onClick={clearView}
               src="/images/icons/close.svg"

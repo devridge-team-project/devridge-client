@@ -1,6 +1,16 @@
+import { Button } from "@/components/communities";
+import { PostCardCommunityProps } from "@/interface";
 import { cn } from "@/util";
 
-export default function PostCardCommunityDesign() {
+export default function PostCardCommunityDesign({
+  id,
+  createdAt,
+  title,
+  content,
+  likes,
+  views,
+  member,
+}: PostCardCommunityProps) {
   const container = {
     sizes: "w-full h-70",
     displays: "flex flex-col",
@@ -9,11 +19,6 @@ export default function PostCardCommunityDesign() {
   };
   const header = {
     container: "flex justify-between",
-    coffeeChatButton: {
-      sizes: "w-17.5 h-7.5",
-      styles: "bg-bright-purple rounded-md ",
-      fonts: "text-white text-xs font-bold",
-    },
   };
   const body = {
     container: "flex flex-col gap-3.5 pt-6.25 ",
@@ -33,29 +38,28 @@ export default function PostCardCommunityDesign() {
       <div className={header.container}>
         <div className="flex gap-3.5">
           <div className="bg-black rounded-full w-12.5 h-12.5" />
-          <div>
-            <div className="font-bold text-sm">김고성</div>
-            <div className="text-xs">IOS 개발자 지망생</div>
-            <div className="text-xs">3시간 전</div>
+          <div className="flex flex-col">
+            <div className="font-bold text-sm">{member.nickname}</div>
+            <div className="text-xs">{member.introduction}</div>
+            <div className="text-xs">{createdAt}</div>
           </div>
         </div>
-        <button className={cn(header.coffeeChatButton)}>커피챗</button>
+        <Button.CoffeeChat id={id} />
       </div>
       <div className={body.container}>
-        <div className={cn(body.title)}>This is Title</div>
-        <div className={cn(body.content)}>This is Content</div>
+        <div className={cn(body.title)}>{title}</div>
+        <div className={cn(body.content)}>{content}</div>
       </div>
       <div className="flex justify-between text-xxs pt-8.75">
         <div className="flex gap-3.25">
-          <div className="min-w-12.5">좋아요</div>
+          <div className="min-w-12.5">좋아요 {likes}</div>
           <div>저장</div>
         </div>
-        <div>조회 0</div>
+        <div>조회 {views}</div>
       </div>
       <div className="pt-3.75 flex gap-3.75 text-xxs font-bold">
-        <div>추천해요</div>
-        <div>저장하기</div>
-        <div>저장하기</div>
+        <Button title="추천해요" onClick={() => {}} />
+        <Button title="저장하기" onClick={() => {}} />
       </div>
     </div>
   );

@@ -2,7 +2,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import RootLayout from "./layout";
 import RootPage from "./page";
 import { Communities } from "./communities";
-import { Questions } from "./questions";
+import { Questions, Question } from "./questions";
+import { MyPage } from "./mypage";
+import { SignIn } from "./sign-in";
+import { SignUp } from "./sign-up";
 
 export default function App() {
   return (
@@ -10,9 +13,21 @@ export default function App() {
       <Routes>
         <Route path="/" element={<RootLayout />}>
           <Route index element={<RootPage />} />
-          <Route path="questions" element={<Questions />} />
+          <Route path="sign-in">
+            <Route index element={<SignIn />} />
+          </Route>
+          <Route path="sign-up">
+            <Route index element={<SignUp />} />
+          </Route>
+          <Route path="mypage">
+            <Route index element={<MyPage />} />
+          </Route>
           <Route path="communities">
-            <Route index element={<Communities />} />{" "}
+            <Route index element={<Communities />} />
+          </Route>
+          <Route path="questions">
+            <Route index element={<Questions />} />
+            <Route path=":id" element={<Question />} />
           </Route>
         </Route>
       </Routes>
