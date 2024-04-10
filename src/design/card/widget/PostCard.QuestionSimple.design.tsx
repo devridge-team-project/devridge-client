@@ -1,12 +1,12 @@
+import { PostCardQuestionSimpleProps } from "@/interface/Card";
 import { cn } from "@/util";
-
-interface PostCardQuestionSimple {
-  index: number;
-}
 
 export default function PostCardQuestionSimpleDesign({
   index,
-}: PostCardQuestionSimple) {
+  title,
+  views,
+  commentCount,
+}: PostCardQuestionSimpleProps) {
   const container = {
     sizes: "w-full h-17.5",
     displays: "flex justify-center items-center",
@@ -28,8 +28,10 @@ export default function PostCardQuestionSimpleDesign({
       <div className={cn(body.container)}>
         <div className={cn(body.counter)}>{index}</div>
         <div>
-          <div className="text-xs font-bold">gd</div>
-          <div className="text-xxs">gd</div>
+          <div className="text-xs font-bold">{title}</div>
+          <div className="text-xxs ">
+            답변수 {commentCount} 조회수 {views}
+          </div>
         </div>
       </div>
     </div>

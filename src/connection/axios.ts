@@ -1,11 +1,11 @@
 import Axios, { AxiosRequestConfig } from "axios";
 
 const {
-  VITE_APP_SERVER_URL: serverOrigin,
-  VITE_APP_AUTH_NAVER_AUTH_ORIGIN: naverOrigin,
-  VITE_APP_AUTH_KAKAO_AUTH_ORIGIN: kakaoOrigin,
-  VITE_APP_AUTH_GITHUB_ORIGIN: gitHubOrigin,
-  VITE_APP_AUTH_GOOGLE_AUTH_ORIGIN: googleOrigin,
+  VITE_SERVER_URL: serverOrigin,
+  VITE_AUTH_NAVER_AUTH_ORIGIN: naverOrigin,
+  VITE_AUTH_KAKAO_AUTH_ORIGIN: kakaoOrigin,
+  VITE_AUTH_GITHUB_ORIGIN: gitHubOrigin,
+  VITE_AUTH_GOOGLE_AUTH_ORIGIN: googleOrigin,
 } = import.meta.env;
 
 const apiOrigin = {

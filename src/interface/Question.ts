@@ -5,7 +5,9 @@ export interface Question {
   title: string;
   likes: number;
   views: number;
+  content: string;
   commentCount: number;
+  createdAt: string;
 }
 
 export interface QuestionDetail {

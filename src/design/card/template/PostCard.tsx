@@ -1,3 +1,7 @@
+import {
+  PostCardQuestionProps,
+  PostCardQuestionSimpleProps,
+} from "@/interface/Card";
 import PostCardCommunityDesign from "./../widget/PostCard.Community.design";
 import PostCardQuestionDesign from "./../widget/PostCard.Question.design";
 import PostCardQuestionSimpleDesign from "./../widget/PostCard.QuestionSimple.design";
@@ -6,16 +10,12 @@ function Community() {
   return <PostCardCommunityDesign />;
 }
 
-function Question() {
-  return <PostCardQuestionDesign />;
+function Question(props: PostCardQuestionProps) {
+  return <PostCardQuestionDesign {...props} />;
 }
 
-interface PostCardQuestionSimple {
-  index: number;
-}
-
-function QuestionSimple({ index }: PostCardQuestionSimple) {
-  return <PostCardQuestionSimpleDesign index={index} />;
+function QuestionSimple(props: PostCardQuestionSimpleProps) {
+  return <PostCardQuestionSimpleDesign {...props} />;
 }
 
 Question.Simple = QuestionSimple;

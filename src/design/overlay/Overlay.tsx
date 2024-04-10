@@ -37,7 +37,7 @@ export default function Overlay({ isVisible }: OverlayProps) {
               onClick={clearView}
               src="/images/icons/close.svg"
               alt="close"
-              className="absolute top-6 right-6 cursor-pointer w-7 h-7"
+              className="absolute top-7 right-7 cursor-pointer w-6 h-6"
             />
           </div>
         </animated.div>

@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import RootLayout from "./layout";
 import RootPage from "./page";
-import { Questions } from "./questions";
 import { Communities } from "./communities";
+import { Questions } from "./questions";
 
 export default function App() {
   return (
