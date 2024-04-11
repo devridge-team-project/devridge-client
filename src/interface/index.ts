@@ -4,5 +4,7 @@ export * from "./HTMLElement";
 export * from "./Layout";
 export * from "./Member";
 export * from "./Modal";
+export * from "./Project";
 export * from "./Property";
 export * from "./Question";
+export * from "./Skill";

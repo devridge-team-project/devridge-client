@@ -1,19 +1,16 @@
+import { Project } from "@/interface";
 import { cn } from "@/util";
 import { Link } from "react-router-dom";
+import { PostCard } from "@/design";
 
-interface Project {
-  id: number;
-  roles: string | null;
-}
-
-export default function Projects() {
+export default function Projects({ posts }: { posts?: Project[] }) {
   const header = {
     positions: "fixed top-35 left-0",
-    sizes: "w-full h-37",
-    styles: "bg-white",
+    sizes: "w-full h-77",
+    styles: "bg-white border-b border-bright-gray",
   };
   const block = {
-    sizes: "w-full h-39",
+    sizes: header.sizes,
     styles: "bg-white-off",
   };
 
@@ -26,20 +23,24 @@ export default function Projects() {
             프로젝트
           </Link>
         </div>
-        <div className="w-full h-24 flex justify-center items-center">
-          <div className="relative w-80 h-15 flex items-center">
-            <input
-              className="w-full h-full rounded-full border focus:outline-none pl-8"
-              placeholder="자유롭게 의견을 공유해봐요!"
-            />
-            <img
-              src="/images/icons/writing-gray.svg"
-              className="absolute right-6.25"
-            />
+        <div className="w-full h-64 flex flex-col justify-center items-center">
+          <div className="flex flex-col items-center font-bold text-xl">
+            <div>데브릿지에서 프로젝트를 함께할</div>
+            <div>팀원을 구해보세요!</div>
           </div>
+          <div className="flex flex-col items-center text-sm text-bright-gray pt-5 pb-9">
+            <div>사이드 프로젝트 멤버를 찾거나</div>
+            <div>다양한 목적의 모집글을 올릴 수 있어요!</div>
+          </div>
+          <button className="bg-bright-purple w-80 h-12.5 rounded-md text-white">
+            모집글 작성하기
+          </button>
         </div>
       </div>
       <div className={cn(block)} />
+      {posts?.map((post) => (
+        <PostCard.Project key={post.id} {...post} />
+      ))}
     </>
   );
 }

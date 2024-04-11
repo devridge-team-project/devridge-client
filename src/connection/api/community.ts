@@ -1,5 +1,5 @@
 import httpRequest from "../axios";
-import { Community } from "@/interface";
+import { Community, Project } from "@/interface";
 
 const api = httpRequest.server;
 
@@ -12,11 +12,11 @@ function getCommunity(id: number) {
 }
 
 function getProjects() {
-  return api.get(`/api/community/projects`);
+  return api.get<Project[]>(`/api/community/projects`);
 }
 
 function getProject(id: number) {
-  return api.get(`/api/community/projects/${id}`);
+  return api.get<Project>(`/api/community/projects/${id}`);
 }
 
 const communityApi = {

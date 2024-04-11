@@ -1,11 +1,12 @@
 import { Member } from "./Member";
 import { OnClick } from "./Property";
+import { Skill } from "./Skill";
 
 export interface PostCardProps {
   id: number;
   title: string;
-  commentCount: number;
   content: string;
+  commentCount: number;
   views: number;
   likes: number;
   createdAt: string;
@@ -14,6 +15,16 @@ export interface PostCardProps {
 export interface PostCardCommunityProps extends PostCardProps {
   member: Member;
 }
+
+export interface PostCardProjectProps
+  extends Omit<PostCardProps, "commentCount"> {
+  dislikes: number;
+  roles: string | null;
+  isRecruiting: boolean;
+  meeting: string;
+  skills: Skill[];
+}
+
 export interface PostCardQuestionProps extends PostCardProps {}
 export interface PostCardQuestionSimpleProps
   extends Omit<PostCardProps, "content"> {
