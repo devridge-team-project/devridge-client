@@ -12,7 +12,7 @@ export default function Questions({
     container: {
       displays: "flex justify-center items-center",
       sizes: "w-full h-15.5",
-      styles: "bg-white border-b-2 border-white-grey",
+      styles: "bg-white border-b-2 border-white-gray",
     },
     body: "w-full max-w-80 font-bold flex items-center gap-1.5",
   };
@@ -20,7 +20,7 @@ export default function Questions({
     container: {
       displays: "flex justify-center items-center",
       sizes: "w-full h-15.5",
-      styles: "bg-white border-b-2 border-white-grey",
+      styles: "bg-white border-b-2 border-white-gray",
     },
     body: "w-full max-w-80 font-bold",
   };
@@ -33,7 +33,7 @@ export default function Questions({
         </div>
       </div>
       {questionByViews?.map((question, index) => (
-        <PostCard.Question.Simple
+        <PostCard.Question.Preview
           key={question.id}
           index={index + 1}
           {...question}

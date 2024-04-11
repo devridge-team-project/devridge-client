@@ -18,5 +18,13 @@ export default function QuestionPage() {
     ],
   });
 
-  return <Question post={post} answers={answers} />;
+  return (
+    <Question
+      post={post}
+      answers={answers}
+      createComment={() => {}}
+      like={() => {}}
+      coffeeChat={() => {}}
+    />
+  );
 }

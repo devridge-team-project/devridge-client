@@ -1,14 +1,19 @@
 import { CommentCard } from "@/design";
-import { Answer, QuestionById } from "@/interface";
-import { Member } from "@/interface";
+import { Answer, OnClick, QuestionById } from "@/interface";
 import { cn } from "@/util";
 
 export default function Question({
   post,
   answers,
+  createComment,
+  coffeeChat,
+  like,
 }: {
   post?: QuestionById;
   answers?: Answer[];
+  createComment: OnClick;
+  coffeeChat: OnClick;
+  like: OnClick;
 }) {
   const { title, member, content, views, likes, createdAt } = post ?? {};
   const container = {
@@ -34,11 +39,9 @@ export default function Question({
     },
   };
   const comment = {
-    container: {
-      displays: "flex flex-col items-center gap-2.5",
-      paddings: "pt-5 px-8",
-      style: "bg-white",
-    },
+    displays: "flex flex-col items-center gap-2.5",
+    paddings: "pt-5 px-8 pb-6",
+    style: "bg-white",
   };
   return (
     <div className={cn(container)}>
@@ -76,13 +79,20 @@ export default function Question({
           </div>
         </div>
       </div>
-      <div className={cn(comment.container)}>COMMENT SECTION</div>
-      <div className={cn(comment.container)}>
+      <div className={cn(comment)}>
+        <div className="text-lg font-bold w-full max-w-120">답변하기</div>
+        <CommentCard.Create mutate={createComment} />
+      </div>
+      <div className={cn(comment)}>
         <div className="text-lg font-bold w-full max-w-120">
           답변 {answers?.length ?? "0"}
         </div>
         {answers?.map((answer) => (
-          <CommentCard.Question {...answer} />
+          <CommentCard.Read
+            {...answer}
+            coffeeChatMutate={coffeeChat}
+            likeMutate={like}
+          />
         ))}
       </div>
     </div>

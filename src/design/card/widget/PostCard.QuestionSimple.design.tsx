@@ -17,12 +17,12 @@ export default function PostCardQuestionSimpleDesign({
     container: {
       sizes: "w-full max-w-80 h-17.25",
       displays: "flex items-center gap-3.75",
-      border: index !== 1 && "border-t-2 border-white-grey",
+      border: index !== 1 && "border-t-2 border-white-gray",
     },
     counter: {
       displays: "flex justify-center items-center",
       sizes: "w-6.25 h-6.25",
-      styles: "rounded-sm bg-dark-grey text-white",
+      styles: "rounded-sm bg-dark-gray text-white",
     },
   };
   return (

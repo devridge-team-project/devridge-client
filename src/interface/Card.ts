@@ -1,4 +1,5 @@
 import { Member } from "./Member";
+import { OnClick } from "./Property";
 
 export interface PostCardProps {
   id: number;
@@ -19,7 +20,7 @@ export interface PostCardQuestionSimpleProps
   index: number;
 }
 
-interface CommentCardProps {
+export interface CommentCardProps {
   id: number;
   member: Member;
   content: string;
@@ -27,4 +28,11 @@ interface CommentCardProps {
   createdAt: string;
 }
 
-export interface CommentCardQuestionProps extends CommentCardProps {}
+export interface CommentCardReadProps extends CommentCardProps {
+  coffeeChatMutate: OnClick;
+  likeMutate: OnClick;
+}
+
+export interface CommentCardCreateProps {
+  mutate: OnClick;
+}

@@ -15,11 +15,11 @@ function Question(props: PostCardQuestionProps) {
   return <PostCardQuestionDesign {...props} />;
 }
 
-function QuestionSimple(props: PostCardQuestionSimpleProps) {
+function QuestionPreview(props: PostCardQuestionSimpleProps) {
   return <PostCardQuestionSimpleDesign {...props} />;
 }
 
-Question.Simple = QuestionSimple;
+Question.Preview = QuestionPreview;
 
 const PostCard = {
   Community,
