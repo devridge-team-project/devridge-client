@@ -15,6 +15,8 @@ export default {
         "1xl": "1rem",
       },
       inset: {
+        6.5: "1.625rem",
+        8.75: "2.1875rem",
         300: "75rem",
       },
       spacing: {
@@ -56,7 +58,9 @@ export default {
         30: "7.5rem",
         34: "8.5rem",
         35: "8.75rem",
+        37: "9.25rem",
         37.5: "9.375rem",
+        39: "9.75rem",
         44: "11rem",
         50: "12.5rem",
         55: "13.75rem",

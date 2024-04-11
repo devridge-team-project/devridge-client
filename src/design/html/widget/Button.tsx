@@ -1,4 +1,4 @@
-import { ButtonProps, Size } from "@/interface";
+import { ButtonProps, OnClick, Size } from "@/interface";
 import { center } from "@/style/display";
 import { cn } from "@/util";
 
@@ -15,12 +15,7 @@ const colorSet = {
   white: "bg-white border-2 border-black text-black",
 } as Record<string, string>;
 
-export default function Button({
-  title,
-  onClick,
-  options,
-  freeze,
-}: ButtonProps) {
+function Button({ title, onClick, options, freeze }: ButtonProps) {
   const { size, color } = options ?? {};
   const container = {
     positions: center.colO(0),
@@ -36,3 +31,20 @@ export default function Button({
     </button>
   );
 }
+
+function Float({ image, onClick }: { image: string; onClick: OnClick }) {
+  const container = {
+    positions: "fixed bottom-6.5 right-8.75",
+    displays: "flex justify-center items-center",
+    sizes: "w-17.5 h-17.5 rounded-full bg-black",
+  };
+  return (
+    <button onClick={onClick} className={cn(container)}>
+      <img src={image} alt="float" />
+    </button>
+  );
+}
+
+Button.Float = Float;
+
+export default Button;

@@ -1,8 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import RootLayout from "./layout";
 import RootPage from "./page";
-import { Communities } from "./communities";
+import { Communities, Community } from "./communities";
 import { Questions, Question } from "./questions";
+import { Projects, Project } from "./projects";
 import { MyPage } from "./mypage";
 import { SignIn } from "./sign-in";
 import { SignUp } from "./sign-up";
@@ -24,6 +25,11 @@ export default function App() {
           </Route>
           <Route path="communities">
             <Route index element={<Communities />} />
+            <Route path=":id" element={<Community />} />
+          </Route>
+          <Route path="projects">
+            <Route index element={<Projects />} />
+            <Route path=":id" element={<Project />} />
           </Route>
           <Route path="questions">
             <Route index element={<Questions />} />

@@ -8,7 +8,10 @@ export default function Header() {
   const navigate = useNavigation();
   const location = useLocation().pathname;
 
-  const isLocated = location === "/questions" || location === "/communities";
+  const isLocated =
+    location === "/questions" ||
+    location === "/communities" ||
+    location === "/projects";
   const container = {
     positions: "fixed top-0 left-0 z-40",
     displays: "flex flex-col ",
@@ -58,5 +61,6 @@ export default function Header() {
 
 const subHeaderString = {
   questions: "개발 Q&A",
+  projects: "커뮤니티",
   communities: "커뮤니티",
 } as Record<string, string>;

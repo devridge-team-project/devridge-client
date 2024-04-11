@@ -1,5 +1,6 @@
 import { PostCardCommunityProps } from "@/interface";
 import { cn } from "@/util";
+import { Link } from "react-router-dom";
 
 export default function PostCardCommunityDesign({
   id,

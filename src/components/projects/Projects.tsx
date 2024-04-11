@@ -1,14 +1,12 @@
-import { PostCard } from "@/design";
-import { Community } from "@/interface";
 import { cn } from "@/util";
 import { Link } from "react-router-dom";
 
-export default function Communities({ posts }: { posts?: Community[] }) {
-  const container = {
-    displays: "flex flex-col gap-2",
-    paddings: "pb-2",
-    styles: "bg-white-off",
-  };
+interface Project {
+  id: number;
+  roles: string | null;
+}
+
+export default function Projects() {
   const header = {
     positions: "fixed top-35 left-0",
     sizes: "w-full h-37",
@@ -23,10 +21,10 @@ export default function Communities({ posts }: { posts?: Community[] }) {
     <>
       <div className={cn(header)}>
         <div className="pl-9 flex items-center gap-5 w-full h-13 border-b font-bold">
-          <Link to="/communities" className="text-bright-purple">
-            자유게시판
+          <Link to="/communities">자유게시판</Link>
+          <Link to="/projects" className="text-bright-purple">
+            프로젝트
           </Link>
-          <Link to="/projects">프로젝트</Link>
         </div>
         <div className="w-full h-24 flex justify-center items-center">
           <div className="relative w-80 h-15 flex items-center">
@@ -42,21 +40,6 @@ export default function Communities({ posts }: { posts?: Community[] }) {
         </div>
       </div>
       <div className={cn(block)} />
-      <div className={cn(container)}>
-        {posts?.map((post) => (
-          <PostCard.Community
-            key={post.id}
-            id={post.id}
-            title={post.title}
-            content={post.content}
-            createdAt={post.createdAt}
-            likes={post.likeCount}
-            views={post.viewCount}
-            commentCount={post.comments}
-            member={post.member}
-          />
-        ))}
-      </div>
     </>
   );
 }

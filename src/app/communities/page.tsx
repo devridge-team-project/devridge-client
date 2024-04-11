@@ -1,4 +1,4 @@
-import { Communities } from "@/components/communities";
+import { Communities } from "@/components";
 import { communityApi } from "@/connection";
 import { useQueries } from "@tanstack/react-query";
 

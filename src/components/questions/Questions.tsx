@@ -1,4 +1,4 @@
-import { PostCard } from "@/design";
+import { Button, PostCard } from "@/design";
 import { Question } from "@/interface";
 import { cn } from "@/util";
 export default function Questions({
@@ -47,6 +47,10 @@ export default function Questions({
           <PostCard.Question {...question} />
         </div>
       ))}
+      <Button.Float
+        image="/images/icons/writing-white.svg"
+        onClick={() => {}}
+      />
     </div>
   );
 }
