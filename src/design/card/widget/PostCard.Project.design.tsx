@@ -50,6 +50,4 @@ export default function PostCardProjectDesign({
       </div>
     </div>
   );
-  {
-  }
 }
