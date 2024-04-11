@@ -1,4 +1,3 @@
-import { Button } from "@/components/communities";
 import { PostCardCommunityProps } from "@/interface";
 import { cn } from "@/util";
 
@@ -32,7 +31,11 @@ export default function PostCardCommunityDesign({
       fonts: "text-xs",
     },
   };
-
+  const coffeeChatButton = {
+    sizes: "w-17.5 h-7.5",
+    styles: "bg-bright-purple rounded-md ",
+    fonts: "text-white text-xs font-bold",
+  };
   return (
     <div className={cn(container)}>
       <div className={header.container}>
@@ -44,7 +47,7 @@ export default function PostCardCommunityDesign({
             <div className="text-xs">{createdAt}</div>
           </div>
         </div>
-        <Button.CoffeeChat id={id} />
+        <button className={cn(coffeeChatButton)}>커피챗</button>
       </div>
       <div className={body.container}>
         <div className={cn(body.title)}>{title}</div>
@@ -58,8 +61,8 @@ export default function PostCardCommunityDesign({
         <div>조회 {views}</div>
       </div>
       <div className="pt-3.75 flex gap-3.75 text-xxs font-bold">
-        <Button title="추천해요" onClick={() => {}} />
-        <Button title="저장하기" onClick={() => {}} />
+        <button onClick={() => {}}>추천해요</button>
+        <button onClick={() => {}}>저장하기</button>
       </div>
     </div>
   );

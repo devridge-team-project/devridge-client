@@ -1,4 +1,3 @@
-import { Button } from "@/components/questions";
 import { CommentCardReadProps } from "@/interface";
 import { cn } from "@/util";
 
@@ -17,6 +16,18 @@ export default function CommentCardQuestionDesign({
     paddings: "px-5 py-4",
     styles: "bg-white border-2 rounded-md",
   };
+  const coffeeChatButton = {
+    positions: "absolute top-0 right-0",
+    sizes: "w-21.25 h-6.25",
+    styles: "bg-black rounded-md ",
+    fonts: "text-white text-xxs font-bold",
+  };
+  const likeButton = {
+    positions: "absolute bottom-4 left-4.5",
+    displays: "flex gap-1 items-center",
+    fonts: "text-xxs",
+  };
+
   return (
     <div className={cn(container)}>
       <div className="text-xxs text-bright-gray">{createdAt}</div>
@@ -30,17 +41,15 @@ export default function CommentCardQuestionDesign({
             {member.introduction}
           </div>
         </div>
-        <Button.CoffeeChat
-          onClick={coffeeChatMutate}
-          className="absolute top-0 right-0"
-        />
+        <button onClick={coffeeChatMutate} className={cn(coffeeChatButton)}>
+          커피챗 신청하기
+        </button>
       </div>
       <div className="text-xxs pt-2.5">{content}</div>
-      <Button.Like
-        onClick={likeMutate}
-        likes={likes}
-        className="absolute bottom-4 left-4.5"
-      />
+      <button onClick={likeMutate} className={cn(likeButton)}>
+        <img src="/images/icons/thumbs-up.svg" />
+        <div>좋아요 {likes}</div>
+      </button>
     </div>
   );
 }
