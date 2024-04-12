@@ -1,8 +1,8 @@
+import { Member } from "./Member";
 import { Skill } from "./Skill";
 
 export interface Project {
   id: number;
-  createdAt: string;
   roles: string | null;
   title: string;
   content: string;
@@ -12,4 +12,7 @@ export interface Project {
   isRecruiting: boolean;
   skills: Skill[];
   meeting: string;
+  member: Member;
+  createdAt: string;
+  updatedAt: string;
 }

@@ -45,5 +45,5 @@ export interface CommentCardReadProps extends CommentCardProps {
 }
 
 export interface CommentCardCreateProps {
-  mutate: OnClick;
+  mutate?: OnClick;
 }

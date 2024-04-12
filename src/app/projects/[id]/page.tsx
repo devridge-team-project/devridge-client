@@ -1,3 +1,13 @@
+import { useQuery } from "@tanstack/react-query";
+import { Project } from "@/components";
+import { communityApi } from "@/connection";
+import { useParams } from "react-router-dom";
+
 export default function ProjectPage() {
-  return <div>Project</div>;
+  const { id } = useParams();
+  const { data: post } = useQuery({
+    queryKey: ["getProject"],
+    queryFn: () => communityApi.project.get(parseInt(id ?? "0", 10)),
+  });
+  return <Project post={post} />;
 }

@@ -1,6 +1,8 @@
 import { PostCardProjectProps } from "@/interface";
 import { cn } from "@/util";
+import { Link } from "react-router-dom";
 export default function PostCardProjectDesign({
+  id,
   title,
   content,
   isRecruiting,
@@ -37,7 +39,7 @@ export default function PostCardProjectDesign({
     styles: "line-clamp-4",
   };
   return (
-    <div className={cn(container)}>
+    <Link to={`/projects/${id}`} className={cn(container)}>
       <div className={cn(body)}>
         <div className={cn(tagBox)}>사이드 프로젝트</div>
         <div className="flex font-bold pt-1 ">
@@ -48,6 +50,6 @@ export default function PostCardProjectDesign({
         </div>
         <div className={cn(contentBox)}>{content}</div>
       </div>
-    </div>
+    </Link>
   );
 }
