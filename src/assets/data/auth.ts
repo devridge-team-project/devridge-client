@@ -1,19 +1,19 @@
 const auths = [
   {
     name: "kakao",
-    image: "kakao.svg",
+    icon: "kakao.svg",
   },
   {
     name: "google",
-    image: "google.svg",
+    icon: "google.svg",
   },
   {
     name: "naver",
-    image: "naver.svg",
+    icon: "naver.svg",
   },
   {
     name: "gitHub",
-    image: "github.svg",
+    icon: "github.svg",
   },
 ];
 

@@ -32,8 +32,8 @@ export default function SignIn() {
         <div className={cn(bottomBox)}>
           <div>다른 계정으로 로그인하기</div>
           <div className="flex gap-5">
-            {auths.map(({ image }) => (
-              <img src={`/images/icons/${image}`} />
+            {auths.map(({ icon }) => (
+              <img src={`/images/icons/${icon}`} />
             ))}
           </div>
           <div className="flex gap-2.5 mt-5">
