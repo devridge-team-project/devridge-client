@@ -12,6 +12,7 @@ export default function Header() {
     location === "/questions" ||
     location === "/communities" ||
     location === "/projects" ||
+    location === "/studies" ||
     location === "/notices";
   const container = {
     positions: "fixed top-0 left-0 z-40",
@@ -62,6 +63,7 @@ export default function Header() {
 
 const subHeaderString = {
   questions: "개발 Q&A",
+  studies: "커뮤니티",
   projects: "커뮤니티",
   communities: "커뮤니티",
   notices: "공지사항",
