@@ -1,4 +1,4 @@
-import { State, Size } from "./Property";
+import { State, Size, OnClick } from "./Property";
 
 export type Script = string | string[] | undefined;
 
@@ -19,7 +19,7 @@ export interface SelectProps<T> {
 export interface ButtonProps {
   title: string;
   type?: string;
-  onClick?: () => unknown | (() => Promise<unknown>);
+  onClick?: OnClick;
   options?: { size?: Size; color?: string };
   freeze?: boolean;
 }

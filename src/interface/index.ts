@@ -10,4 +10,5 @@ export * from "./Property";
 export * from "./Question";
 export * from "./Study";
 export * from "./Answer";
+export * from "./Sign";
 export * from "./Skill";

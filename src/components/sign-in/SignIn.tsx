@@ -3,11 +3,12 @@ import { cn } from "@/util";
 import { useState } from "react";
 import { useNavigation } from "@/hook";
 import { auths } from "@/assets";
+import { OnClick, SignInRequest } from "@/interface";
 
-export default function SignIn() {
+export default function SignIn({ signIn }: { signIn: OnClick<SignInRequest> }) {
   const navigation = useNavigation();
-  const id = useState("");
-  const password = useState("");
+  const email = useState<string>("");
+  const password = useState<string>("");
   const container = {
     displays: "flex justify-center items-center",
     paddings: "px-4 pt-24",
@@ -24,9 +25,13 @@ export default function SignIn() {
     <div className={cn(container)}>
       <div className={cn(body)}>
         <div className="text-3xl text-bright-purple font-bold">로그인</div>
-        <Input state={id} />
+        <Input state={email} />
         <Input state={password} />
-        <Button title="로그인" options={{ size: "full" }} />
+        <Button
+          title="로그인"
+          onClick={() => signIn({ email: email[0], password: password[0] })}
+          options={{ size: "full" }}
+        />
         <div className="flex w-full justify-end">
           <button>비밀번호 찾기</button>
         </div>

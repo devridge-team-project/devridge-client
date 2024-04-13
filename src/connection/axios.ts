@@ -105,7 +105,7 @@ const http = (
 };
 
 const httpRequest = {
-  server: http(apiOrigin.server),
+  server: http(apiOrigin.server, { withCredentials: true }),
 };
 
 export default httpRequest;

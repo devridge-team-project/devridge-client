@@ -40,9 +40,11 @@ export type Size = "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "full" | "auto";
 
 export type ImageSize = "sub" | "full";
 
-export type OnClick = () => unknown | (() => Promise<unknown>);
+export type OnClick<T = unknown> = (
+  prop: T
+) => unknown | ((prop: T) => Promise<unknown>);
 
-export type Button = [string, OnClick];
+export type Button<T = unknown> = [string, OnClick<T>];
 
 export type Scripts = {
   script: string;
