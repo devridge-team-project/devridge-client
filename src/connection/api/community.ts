@@ -20,11 +20,11 @@ function getProject(id: number) {
 }
 
 export const getStudies = () => {
-  return api.get<Study[]>("api/community/studies");
+  return api.get<Study[]>("/api/community/studies");
 };
 
 export const getStudy = (id: number) => {
-  return api.get<Study>(`api/community/studies/${id}`);
+  return api.get<Study>(`/api/community/studies/${id}`);
 };
 
 const communityApi = {
