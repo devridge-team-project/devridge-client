@@ -11,7 +11,8 @@ export default function Header() {
   const isLocated =
     location === "/questions" ||
     location === "/communities" ||
-    location === "/projects";
+    location === "/projects" ||
+    location === "/notices";
   const container = {
     positions: "fixed top-0 left-0 z-40",
     displays: "flex flex-col ",
@@ -63,4 +64,5 @@ const subHeaderString = {
   questions: "개발 Q&A",
   projects: "커뮤니티",
   communities: "커뮤니티",
+  notices: "공지사항",
 } as Record<string, string>;

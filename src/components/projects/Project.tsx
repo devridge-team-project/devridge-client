@@ -20,7 +20,7 @@ export default function ProjectById({
       styles: "bg-white",
     },
     body: {
-      sizes: "w-full min-h-72",
+      sizes: "w-full max-w-120 ",
     },
     tag: {
       displays: "flex justify-center items-center ",
@@ -50,9 +50,14 @@ export default function ProjectById({
   };
   const commentBox = {
     container: {
+      displays: "flex flex-col items-center",
       paddings: "px-8 pt-6.25",
       sizes: "h-full",
       styles: "bg-white",
+    },
+    body: {
+      displays: "flex flex-col gap-2.5",
+      sizes: " w-full max-w-120",
     },
     button: {
       displays: "flex justify-center items-center",
@@ -61,11 +66,7 @@ export default function ProjectById({
       fonts: "text-white text-sm font-bold",
     },
   };
-  const comment = {
-    displays: "flex flex-col items-center gap-2.5",
-    paddings: "pt-5 px-8 pb-6",
-    style: "bg-white",
-  };
+
   return (
     <div className={cn(container)}>
       <div className={cn(project.container)}>
@@ -105,9 +106,9 @@ export default function ProjectById({
         </div>
       </div>
       <div className={cn(commentBox.container)}>
-        <button className={cn(commentBox.button)}>쪽지 보내기</button>
-        <div className={cn(comment)}>
-          <div className="text-lg font-bold w-full max-w-120">답변하기</div>
+        <div className={cn(commentBox.body)}>
+          <button className={cn(commentBox.button)}>쪽지 보내기</button>
+          <div className="text-lg font-bold">답변하기</div>
           <CommentCard.Create mutate={createComment} />
         </div>
       </div>

@@ -17,9 +17,9 @@ export default function Overlay({ isVisible }: OverlayProps) {
   };
   const body = {
     positions: "relative",
-    displays: "flex flex-col",
+    displays: "flex flex-col gap-2.5",
     sizes: "h-full w-full",
-    paddings: "pt-12 pl-12",
+    paddings: "pt-25 pl-8.75",
   };
 
   const transitions = useTransition(isVisible, {
@@ -34,11 +34,23 @@ export default function Overlay({ isVisible }: OverlayProps) {
       item && (
         <animated.div style={styles} className={cn(container)}>
           <div className={cn(body)}>
-            {links.map(({ name, href }) => (
-              <Link key={href} to={href} onClick={clearView}>
-                {name}
+            <div className="text-xl font-bold ">카테고리</div>
+            {links.map(({ name, href, icon }) => (
+              <Link
+                key={href}
+                to={href}
+                onClick={clearView}
+                className="flex items-center gap-3.75"
+              >
+                <img src={`/images/icons/${icon}.svg`} />
+                <div>{name}</div>
               </Link>
             ))}
+            <img
+              src="/images/icons/devridge.svg"
+              alt="logo"
+              className="absolute top-7 left-8.75 w-7.5 h-7.5 "
+            />
             <img
               onClick={clearView}
               src="/images/icons/close.svg"

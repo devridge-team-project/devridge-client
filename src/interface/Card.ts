@@ -16,6 +16,9 @@ export interface PostCardCommunityProps extends PostCardProps {
   member: Member;
 }
 
+export interface PostCardNoticeProps
+  extends Omit<PostCardProps, "commentCount" | "views" | "likes"> {}
+
 export interface PostCardProjectProps
   extends Omit<PostCardProps, "commentCount"> {
   dislikes: number;
