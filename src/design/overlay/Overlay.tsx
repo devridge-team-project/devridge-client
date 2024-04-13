@@ -3,12 +3,15 @@ import { cn } from "@/util";
 import { useWidgetStore } from "@/shared/store";
 import { Link } from "react-router-dom";
 import { links } from "./links";
+import { Button } from "../html";
+import { useNavigation } from "@/hook";
 
 interface OverlayProps {
   isVisible?: boolean;
 }
 
 export default function Overlay({ isVisible }: OverlayProps) {
+  const navigation = useNavigation();
   const { clearView } = useWidgetStore();
   const container = {
     positions: "fixed top-0 right-0 z-50",
@@ -19,13 +22,13 @@ export default function Overlay({ isVisible }: OverlayProps) {
     positions: "relative",
     displays: "flex flex-col gap-2.5",
     sizes: "h-full w-full",
-    paddings: "pt-25 pl-8.75",
+    paddings: "pt-25 px-8.75",
   };
 
   const transitions = useTransition(isVisible, {
     from: { width: "30%", opacity: 0 },
     enter: { width: "100%", opacity: 1 },
-    leave: { width: "0%", opacity: 0 },
+    leave: { width: "30%", opacity: 0 },
     config: { duration: 150 },
   });
 
@@ -46,6 +49,23 @@ export default function Overlay({ isVisible }: OverlayProps) {
                 <div>{name}</div>
               </Link>
             ))}
+            <div className="flex flex-col mt-21 gap-2.5">
+              <Button
+                onClick={() => navigation("/sign-in", clearView)}
+                options={{
+                  size: "full",
+                }}
+                title="로그인"
+              />
+              <Button
+                onClick={() => navigation("/sign-up", clearView)}
+                options={{
+                  color: "white",
+                  size: "full",
+                }}
+                title="회원가입"
+              />
+            </div>
             <img
               src="/images/icons/devridge.svg"
               alt="logo"

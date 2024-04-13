@@ -3,6 +3,7 @@ import { cn } from "@/util";
 import { Link } from "react-router-dom";
 
 export default function PostCardNoticeDesign({
+  id,
   title,
   content,
 }: PostCardNoticeProps) {
@@ -25,7 +26,7 @@ export default function PostCardNoticeDesign({
   };
 
   return (
-    <Link to="#" className={cn(container)}>
+    <Link to={`/notices/${id}`} className={cn(container)}>
       <div className={cn(textBox.title)}>{title}</div>
       <div className={cn(textBox.content)}>{content}</div>
     </Link>

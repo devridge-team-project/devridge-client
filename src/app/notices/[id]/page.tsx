@@ -1,3 +1,7 @@
+import { useParams } from "react-router-dom";
+
+// TODO: Need design
 export default function NoticePage() {
-  return <div>개발예정</div>;
+  const { id } = useParams();
+  return <div>{id}번째 공지사항</div>;
 }
