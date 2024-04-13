@@ -7,7 +7,7 @@ const sizes = {
   sm: "w-50 h-12 rounded-full",
   md: "w-72 h-12 rounded-full",
   lg: "w-80 h-15 rounded-md",
-  full: "w-full h-12 rounded-md",
+  full: "w-full h-13.75 rounded-md",
 } as Record<Size, string>;
 
 const colorSet = {

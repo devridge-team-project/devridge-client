@@ -28,7 +28,7 @@ export default function Overlay({ isVisible }: OverlayProps) {
   const transitions = useTransition(isVisible, {
     from: { width: "30%", opacity: 0 },
     enter: { width: "100%", opacity: 1 },
-    leave: { width: "30%", opacity: 0 },
+    leave: { width: "50%", opacity: 0 },
     config: { duration: 150 },
   });
 
