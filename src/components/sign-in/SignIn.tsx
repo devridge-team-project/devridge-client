@@ -6,7 +6,8 @@ import { auths } from "@/assets";
 
 export default function SignIn() {
   const navigation = useNavigation();
-  const state = useState("");
+  const id = useState("");
+  const password = useState("");
   const container = {
     displays: "flex justify-center items-center",
     paddings: "px-4 pt-24",
@@ -23,8 +24,8 @@ export default function SignIn() {
     <div className={cn(container)}>
       <div className={cn(body)}>
         <div className="text-3xl text-bright-purple font-bold">로그인</div>
-        <Input state={state} />
-        <Input state={state} />
+        <Input state={id} />
+        <Input state={password} />
         <Button title="로그인" options={{ size: "full" }} />
         <div className="flex w-full justify-end">
           <button>비밀번호 찾기</button>

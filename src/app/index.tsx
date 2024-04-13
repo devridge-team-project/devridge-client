@@ -8,6 +8,7 @@ import { MyPage } from "./mypage";
 import { SignIn } from "./sign-in";
 import { SignUp } from "./sign-up";
 import { Notices, Notice } from "./notices";
+import { Chat } from "./chat";
 
 export default function App() {
   return (
@@ -35,6 +36,9 @@ export default function App() {
           <Route path="questions">
             <Route index element={<Questions />} />
             <Route path=":id" element={<Question />} />
+          </Route>
+          <Route path="chat">
+            <Route index element={<Chat />} />
           </Route>
           <Route path="notices">
             <Route index element={<Notices />} />
