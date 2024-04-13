@@ -1,5 +1,6 @@
 import { auths } from "@/assets";
 import { cn } from "@/util";
+import { Link } from "react-router-dom";
 
 export default function SignUp() {
   const container = {
@@ -12,24 +13,41 @@ export default function SignUp() {
   };
   const iconBox = {
     displays: "flex justify-center items-center",
-    sizes: "w-12.5 h-12.5 p-2.5",
+    sizes: "w-12.5 h-12.5 p-3",
   };
   return (
     <div className={cn(container)}>
       <div className={cn(body)}>
-        <div className="text-3xl text-bright-purple font-bold">
+        <div className="text-3xl text-bright-purple font-bold mb-5">
           회원가입 방식
         </div>
-        {auths.map(({ name, icon }) => (
-          <button className="w-full h-13.75">
+        {auths.map(({ name, script, icon, styles }) => (
+          <Link
+            to="#"
+            className={cn(
+              styles,
+              "relative flex justify-center items-center w-full h-13.75 rounded-lg"
+            )}
+          >
             <img
-              className={name === "google" ? cn(iconBox) : ""}
+              className={cn(
+                name === "google" ? cn(iconBox) : "",
+                "absolute left-4"
+              )}
               src={`/images/icons/${
                 name === "google" ? "google-no-border.svg" : icon
               }`}
             />
-          </button>
+            <div className="font-bold">{script}</div>
+          </Link>
         ))}
+        <div className="text-center">또는</div>
+        <Link
+          to="/sign-up/join"
+          className="flex justify-center items-center h-13.75  rounded-lg bg-black text-white font-bold"
+        >
+          이메일로 가입하기
+        </Link>
       </div>
     </div>
   );

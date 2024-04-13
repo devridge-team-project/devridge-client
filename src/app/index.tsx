@@ -7,7 +7,7 @@ import { Projects, Project } from "./projects";
 import { Studies, Study } from "./studies";
 import { MyPage } from "./mypage";
 import { SignIn } from "./sign-in";
-import { SignUp } from "./sign-up";
+import { SignUp, Join } from "./sign-up";
 import { Notices, Notice } from "./notices";
 import { Chat } from "./chat";
 
@@ -22,6 +22,7 @@ export default function App() {
           </Route>
           <Route path="sign-up">
             <Route index element={<SignUp />} />
+            <Route path="join" element={<Join />} />
           </Route>
           <Route path="mypage">
             <Route index element={<MyPage />} />
