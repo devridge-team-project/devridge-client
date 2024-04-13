@@ -8,4 +8,6 @@ export * from "./Notice";
 export * from "./Project";
 export * from "./Property";
 export * from "./Question";
+export * from "./Study";
+export * from "./Answer";
 export * from "./Skill";

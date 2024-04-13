@@ -21,15 +21,6 @@ export interface QuestionById {
   commentCount: number;
 }
 
-export interface Answer {
-  id: number;
-  member: Member;
-  content: string;
-  likes: number;
-  dislikes: number;
-  createdAt: string;
-}
-
 export interface QuestionPost {
   title: string;
   content: string;

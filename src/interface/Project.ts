@@ -3,16 +3,24 @@ import { Skill } from "./Skill";
 
 export interface Project {
   id: number;
-  roles: string | null;
-  title: string;
-  content: string;
-  likes: number;
-  dislikes: number;
-  views: number;
-  isRecruiting: boolean;
-  skills: Skill[];
-  meeting: string;
-  member: Member;
   createdAt: string;
   updatedAt: string;
+  title: string;
+  content: string;
+  roles: string | null;
+  member: Member;
+  views: number;
+  likes: number;
+  dislikes: number;
+  skills: Skill[];
+  meeting: string;
+  isRecruiting: boolean;
+}
+
+export interface ProjectPost {
+  title: string;
+  content: string;
+  skillIds: number[];
+  meeting: string;
+  roles: string[];
 }
