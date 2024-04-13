@@ -22,6 +22,7 @@ export default function Projects({ posts }: { posts?: Project[] }) {
           <Link to="/projects" className="text-bright-purple">
             프로젝트
           </Link>
+          <Link to="/studies">스터디</Link>
         </div>
         <div className="w-full h-64 flex flex-col justify-center items-center">
           <div className="flex flex-col items-center font-bold text-xl">

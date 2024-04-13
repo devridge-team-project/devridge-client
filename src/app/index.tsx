@@ -4,6 +4,7 @@ import RootPage from "./page";
 import { Communities, Community } from "./communities";
 import { Questions, Question } from "./questions";
 import { Projects, Project } from "./projects";
+import { Studies, Study } from "./studies";
 import { MyPage } from "./mypage";
 import { SignIn } from "./sign-in";
 import { SignUp } from "./sign-up";
@@ -32,6 +33,10 @@ export default function App() {
           <Route path="projects">
             <Route index element={<Projects />} />
             <Route path=":id" element={<Project />} />
+          </Route>
+          <Route path="studies">
+            <Route index element={<Studies />} />
+            <Route path=":id" element={<Study />} />
           </Route>
           <Route path="questions">
             <Route index element={<Questions />} />

@@ -18,6 +18,7 @@ export default function Communities({ posts }: { posts?: Community[] }) {
     sizes: "w-full h-39",
     styles: "bg-white-off",
   };
+  console.log(posts);
 
   return (
     <>
@@ -27,6 +28,7 @@ export default function Communities({ posts }: { posts?: Community[] }) {
             자유게시판
           </Link>
           <Link to="/projects">프로젝트</Link>
+          <Link to="/studies">스터디</Link>
         </div>
         <div className="w-full h-24 flex justify-center items-center">
           <div className="relative w-80 h-15 flex items-center">
@@ -50,8 +52,8 @@ export default function Communities({ posts }: { posts?: Community[] }) {
             title={post.title}
             content={post.content}
             createdAt={post.createdAt}
-            likes={post.likeCount}
-            views={post.viewCount}
+            likes={post.likes}
+            views={post.views}
             commentCount={post.comments}
             member={post.member}
           />
