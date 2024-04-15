@@ -1,18 +1,18 @@
 import { Member } from "./Member";
 
-export interface LastMessage {
+interface LastMessage {
   message: string;
   createdAt: string;
   updateAt: string;
 }
 
-export interface CoffeeChat {
+export interface ChatMessage {
   id: number;
   member: Member;
   lastMessage: LastMessage;
 }
 
-export interface CoffeeChatMessage {
+export interface PrivateMessage {
   id: number;
   member: Member;
   message: string;
@@ -20,14 +20,19 @@ export interface CoffeeChatMessage {
   updateAt: string;
 }
 
-export interface CoffeeChatRequest {
+export interface ChatRequest {
   id: number;
   member: Member;
   message: string;
   status: string;
 }
 
-export interface CoffeeChatReq {
-  coffeeChatRequests: CoffeeChatRequest[] | undefined;
+export interface ChatResponse {
+  id: number;
+  answer: string;
+}
+
+export interface SendReceiveChat {
+  coffeeChatRequests: ChatRequest[] | undefined;
   noReadCount: number;
 }
