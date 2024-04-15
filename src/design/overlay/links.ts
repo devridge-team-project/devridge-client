@@ -14,4 +14,9 @@ export const links = [
     href: "/notices",
     icon: "notice",
   },
+  {
+    name: "커피챗",
+    href: "/chat",
+    icon: "coffeechat",
+  },
 ];

@@ -7,7 +7,7 @@ export default function Studies({ posts }: { posts?: Study[] }) {
   const container = {
     displays: "flex justify-center flex-wrap",
     paddings: "mt-40",
-    styles: "bg-white-off",
+    styles: "bg-white",
   };
   const header = {
     positions: "fixed top-35 left-0",

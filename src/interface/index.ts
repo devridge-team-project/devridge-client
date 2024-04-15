@@ -11,4 +11,5 @@ export * from "./Question";
 export * from "./Study";
 export * from "./Answer";
 export * from "./Sign";
+export * from "./Chat";
 export * from "./Skill";
