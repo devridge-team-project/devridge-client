@@ -3,17 +3,17 @@ import { OnClick } from "./Property";
 import { Skill } from "./Skill";
 
 export interface PostCardProps {
-  id: number;
-  title: string;
-  content: string;
-  commentCount: number;
-  views: number;
-  likes: number;
-  createdAt: string;
+  id: number | undefined;
+  title: string | undefined;
+  content: string | undefined;
+  commentCount: number | undefined;
+  views: number | undefined;
+  likes: number | undefined;
+  createdAt: string | undefined;
 }
 
 export interface PostCardCommunityProps extends PostCardProps {
-  member: Member;
+  member: Member | undefined;
 }
 
 export interface PostCardNoticeProps

@@ -3,6 +3,7 @@ import { cn } from "@/util";
 import { Link } from "react-router-dom";
 
 export default function PostCardCommunityDesign({
+  id,
   createdAt,
   title,
   content,
@@ -49,10 +50,13 @@ export default function PostCardCommunityDesign({
         </div>
         <button className={cn(coffeeChatButton)}>커피챗</button>
       </div>
-      <div className={body.container}>
-        <div className={cn(body.title)}>{title}</div>
-        <div className={cn(body.content)}>{content}</div>
-      </div>
+      <Link to={`${id}`}>
+        <div className={body.container}>
+          <div className={cn(body.title)}>{title}</div>
+          <div className={cn(body.content)}>{content}</div>
+        </div>
+      </Link>
+
       <div className="flex justify-between text-xxs pt-8.75">
         <div className="flex gap-3.25">
           <div className="min-w-12.5">좋아요 {likes}</div>

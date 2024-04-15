@@ -32,7 +32,7 @@ export default function Studies({ posts }: { posts?: Study[] }) {
         {posts?.map(
           (
             {
-              studyId,
+              id,
               category,
               title,
               content,
@@ -48,9 +48,9 @@ export default function Studies({ posts }: { posts?: Study[] }) {
                   idx % 2 === 0 ? "mr-2.5" : ""
                 } `}
               >
-                <Link to={`${studyId}`}>
+                <Link to={`${id}`}>
                   <div className="bg-white-purple border-r-2 text-center text-[6px] text-purple w-12.5 h-3  text-center">
-                    {category}L
+                    {category}
                   </div>
                   <div className="text-bold text-xxs mt-[11px]">{title}</div>
                   <div className="text-[7px] mt-[9px]">{content}</div>
