@@ -1,5 +1,6 @@
 import { Banner } from "@/components";
 import Qnas from "@/components/Qnas";
+import { Footer } from "@/design";
 import { cn } from "@/util";
 
 export default function RootPage() {
@@ -10,6 +11,7 @@ export default function RootPage() {
     <div className={cn(container)}>
       <Banner />
       <Qnas />
+      <Footer />
     </div>
   );
 }
