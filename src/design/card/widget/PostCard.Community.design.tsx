@@ -1,6 +1,6 @@
 import { PostCardCommunityProps } from "@/interface";
 import { cn } from "@/util";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function PostCardCommunityDesign({
   id,
@@ -11,11 +11,13 @@ export default function PostCardCommunityDesign({
   views,
   member,
 }: PostCardCommunityProps) {
+  const isDepth = useLocation().pathname.split("/").length > 2;
   const container = {
     sizes: "w-full h-70",
     displays: "flex flex-col",
     paddings: "px-8 pt-7",
     styles: "bg-white",
+    etc: isDepth && "cursor-default",
   };
   const header = {
     container: "flex justify-between",
@@ -37,26 +39,24 @@ export default function PostCardCommunityDesign({
     styles: "bg-bright-purple rounded-md ",
     fonts: "text-white text-xs font-bold",
   };
+  console.log(isDepth);
   return (
-    <div className={cn(container)}>
+    <Link to={!isDepth ? `${id}` : "#"} className={cn(container)}>
       <div className={header.container}>
         <div className="flex gap-3.5">
           <div className="bg-black rounded-full w-12.5 h-12.5" />
           <div className="flex flex-col">
-            <div className="font-bold text-sm">{member.nickname}</div>
-            <div className="text-xs">{member.introduction}</div>
+            <div className="font-bold text-sm">{member?.nickname}</div>
+            <div className="text-xs">{member?.introduction}</div>
             <div className="text-xs">{createdAt}</div>
           </div>
         </div>
         <button className={cn(coffeeChatButton)}>커피챗</button>
       </div>
-      <Link to={`${id}`}>
-        <div className={body.container}>
-          <div className={cn(body.title)}>{title}</div>
-          <div className={cn(body.content)}>{content}</div>
-        </div>
-      </Link>
-
+      <div className={body.container}>
+        <div className={cn(body.title)}>{title}</div>
+        <div className={cn(body.content)}>{content}</div>
+      </div>
       <div className="flex justify-between text-xxs pt-8.75">
         <div className="flex gap-3.25">
           <div className="min-w-12.5">좋아요 {likes}</div>
@@ -68,6 +68,6 @@ export default function PostCardCommunityDesign({
         <button onClick={() => {}}>추천해요</button>
         <button onClick={() => {}}>저장하기</button>
       </div>
-    </div>
+    </Link>
   );
 }

@@ -1,6 +1,6 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { signUpApi } from "@/connection";
+import { signApi } from "@/connection";
 import { useSignUpStore } from "@/shared/sign-up/store";
 import { useEffect } from "react";
 
@@ -11,7 +11,7 @@ function Auth({ provider }: { provider: string }) {
   const navigate = useNavigate();
   const { data, isSuccess } = useQuery({
     queryKey: ["auth", code],
-    queryFn: () => signUpApi.auth.token.post(provider, code ?? ""),
+    queryFn: () => signApi.auth(provider, code ?? ""),
   });
 
   useEffect(() => {
