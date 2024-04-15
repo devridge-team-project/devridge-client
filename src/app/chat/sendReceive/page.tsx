@@ -8,13 +8,14 @@ export default function SendReceiveMessagesPage() {
   const { pathname } = useLocation();
   let queryKey = "";
   let viewOption = "";
-  if (pathname === "/coffeechat/res") {
+  if (pathname === "/chat/receive") {
     queryKey = "coffee-chat-receive";
     viewOption = "receive";
-  } else if (pathname === "/coffeechat/req") {
+  } else if (pathname === "/chat/send") {
     queryKey = "coffee-chat-send";
     viewOption = "send";
   }
+  console.log(viewOption);
 
   const { data: posts } = useQuery({
     queryKey: [`${queryKey}`],

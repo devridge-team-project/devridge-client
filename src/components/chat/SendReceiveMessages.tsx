@@ -20,9 +20,7 @@ export default function SendReceiveMessages({
   return (
     <div className={cn(header)}>
       <div className="pr-9 flex justify-end tems-center gap-5 w-full h-13 border-b ">
-        <Link to="/chat" className="font-bold">
-          매세지
-        </Link>
+        <Link to="/chat">매세지</Link>
         <Link
           to="/chat/receive"
           className={pathname === "/chat/receive" ? "font-bold" : ""}

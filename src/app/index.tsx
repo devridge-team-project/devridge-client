@@ -9,7 +9,7 @@ import { MyPage } from "./mypage";
 import { SignIn } from "./sign-in";
 import { SignUp, Join } from "./sign-up";
 import { Notices, Notice } from "./notices";
-import { Chat } from "./chat";
+import { Chat, PrivateChatPage, SendReceiveMessagesPage } from "./chat";
 
 export default function App() {
   return (
@@ -45,6 +45,9 @@ export default function App() {
           </Route>
           <Route path="chat">
             <Route index element={<Chat />} />
+            <Route path=":id" element={<PrivateChatPage />} />
+            <Route path="receive" element={<SendReceiveMessagesPage />} />
+            <Route path="send" element={<SendReceiveMessagesPage />} />
           </Route>
           <Route path="notices">
             <Route index element={<Notices />} />
