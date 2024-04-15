@@ -19,4 +19,9 @@ export const links = [
     href: "/chat",
     icon: "coffeechat",
   },
+  {
+    name: "마이페이지",
+    href: "/mypage",
+    icon: "user",
+  },
 ];
