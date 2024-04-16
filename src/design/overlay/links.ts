@@ -24,4 +24,9 @@ export const links = [
     href: "/mypage",
     icon: "user",
   },
+  {
+    name: "쪽지",
+    href: "/notes",
+    icon: "note",
+  },
 ];
