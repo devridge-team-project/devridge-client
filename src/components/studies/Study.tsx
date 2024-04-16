@@ -1,12 +1,18 @@
-import { CommentCard } from "@/design";
-import { OnClick, Study } from "@/interface";
+import { PostCard, CommentCard } from "@/design";
+import { Answer, OnClick, Study } from "@/interface";
 import { cn } from "@/util";
 function StudyById({
   post,
+  answers,
   createComment,
+  coffeeChat,
+  like,
 }: {
   post?: Study;
+  answers?: Answer[];
   createComment?: OnClick;
+  coffeeChat: OnClick;
+  like: OnClick;
 }) {
   const commentBox = {
     container: {
@@ -35,6 +41,16 @@ function StudyById({
           <div className="text-lg font-bold">답변하기</div>
           <CommentCard.Create mutate={createComment} />
         </div>
+        <div className="text-lg font-bold w-full max-w-120">
+          답변 {answers?.length ?? "0"}
+        </div>
+        {answers?.map((answer) => (
+          <CommentCard.Read
+            {...answer}
+            coffeeChatMutate={coffeeChat}
+            likeMutate={like}
+          />
+        ))}
       </div>
     </div>
   );
