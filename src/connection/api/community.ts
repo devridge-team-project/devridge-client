@@ -6,6 +6,8 @@ import {
   ProjectPost,
   Study,
   StudyPost,
+  Answer,
+  Content,
 } from "@/interface";
 
 const api = httpRequest.server;
@@ -76,19 +78,55 @@ const postStudy = ({
   });
 };
 
+export const getCommunityComments = (id: number) => {
+  return api.get<Answer[]>(`api/community/${id}/comments`);
+};
+
+export const postCommunityComments = (id: number, content: Content) => {
+  return api.post(`api/community/${id}/comments`, content);
+};
+
+export const getProjectComments = (id: number) => {
+  return api.get<Answer[]>(`api/community/projects/${id}/comments`);
+};
+
+export const postProjectComments = (id: number, content: Content) => {
+  return api.post(`api/community/projects/${id}/comments`, content);
+};
+
+export const getStudyComments = (id: number) => {
+  return api.get<Answer[]>(`api/community/studies/${id}/comments`);
+};
+
+export const postStudyComments = (id: number, content: Content) => {
+  return api.post(`api/community/studies/${id}/comments`, content);
+};
+
 const communityApi = {
   getAll: getCommunities,
   get: getCommunity,
   post: postCommunity,
+  answer: {
+    getAll: getCommunityComments,
+    post: postCommunityComments,
+  },
   project: {
     getAll: getProjects,
     get: getProject,
     post: postProject,
+    answer: {
+      getAll: getProjectComments,
+      post: postProjectComments,
+    },
   },
   study: {
     getAll: getStudies,
     get: getStudy,
     post: postStudy,
+    answer: {
+      getAll: getStudyComments,
+      post: postStudyComments,
+    },
   },
 };
 
