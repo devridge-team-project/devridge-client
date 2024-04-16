@@ -5,6 +5,7 @@ import { Communities, Community } from "./communities";
 import { Questions, Question } from "./questions";
 import { Projects, Project } from "./projects";
 import { Studies, Study } from "./studies";
+import { Notes, Note } from "./notes";
 import { MyPage } from "./mypage";
 import { SignIn } from "./sign-in";
 import { SignUp, Join } from "./sign-up";
@@ -48,6 +49,10 @@ export default function App() {
             <Route path=":id" element={<PrivateChatPage />} />
             <Route path="receive" element={<SendReceiveMessagesPage />} />
             <Route path="send" element={<SendReceiveMessagesPage />} />
+          </Route>
+          <Route path="notes">
+            <Route index element={<Notes />} />
+            <Route path=":id" element={<Note />} />
           </Route>
           <Route path="notices">
             <Route index element={<Notices />} />
