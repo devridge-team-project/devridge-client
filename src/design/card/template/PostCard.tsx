@@ -1,6 +1,7 @@
 import {
   PostCardCommunityProps,
   PostCardNoticeProps,
+  PostCardNoteProps,
   PostCardProjectProps,
   PostCardQuestionProps,
   PostCardQuestionSimpleProps,
@@ -10,6 +11,7 @@ import PostCardProjectDesign from "../widget/PostCard.Project.design";
 import PostCardQuestionDesign from "./../widget/PostCard.Question.design";
 import PostCardQuestionSimpleDesign from "./../widget/PostCard.QuestionSimple.design";
 import PostCardNoticeDesign from "../widget/PostCard.Notice.design";
+import PostCardNoteDesign from "../widget/PostCard.Note.design";
 
 function Community(props: PostCardCommunityProps) {
   return <PostCardCommunityDesign {...props} />;
@@ -17,6 +19,10 @@ function Community(props: PostCardCommunityProps) {
 
 function Notice(props: PostCardNoticeProps) {
   return <PostCardNoticeDesign {...props} />;
+}
+
+function Note(props: PostCardNoteProps) {
+  return <PostCardNoteDesign {...props} />;
 }
 
 function Project(props: PostCardProjectProps) {
@@ -36,6 +42,7 @@ Question.Preview = QuestionPreview;
 const PostCard = {
   Community,
   Notice,
+  Note,
   Project,
   Question,
 };
