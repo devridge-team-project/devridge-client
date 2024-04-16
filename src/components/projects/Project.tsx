@@ -1,13 +1,19 @@
-import { CommentCard } from "@/design";
-import { OnClick, Project } from "@/interface";
+import { PostCard, CommentCard } from "@/design";
+import { Answer, OnClick, Project } from "@/interface";
 import { cn } from "@/util";
 
 export default function ProjectById({
   post,
+  answers,
   createComment,
+  coffeeChat,
+  like,
 }: {
   post?: Project;
+  answers?: Answer[];
   createComment?: OnClick;
+  coffeeChat: OnClick;
+  like: OnClick;
 }) {
   const container = {
     displays: "flex flex-col gap-2.5",
@@ -111,6 +117,16 @@ export default function ProjectById({
           <div className="text-lg font-bold">답변하기</div>
           <CommentCard.Create mutate={createComment} />
         </div>
+        <div className="text-lg font-bold w-full max-w-120">
+          답변 {answers?.length ?? "0"}
+        </div>
+        {answers?.map((answer) => (
+          <CommentCard.Read
+            {...answer}
+            coffeeChatMutate={coffeeChat}
+            likeMutate={like}
+          />
+        ))}
       </div>
     </div>
   );
