@@ -9,3 +9,7 @@ export interface Answer {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface Content {
+  content: string;
+}
