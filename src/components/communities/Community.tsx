@@ -20,17 +20,10 @@ export default function CommunityById({
     styles: "bg-white-off",
   };
 
-  const comment = {
-    displays: "flex flex-col items-center gap-2.5",
-    paddings: "pt-5 px-8 pb-6",
-    style: "bg-white",
-  };
-
-  /* const commentBox = {
+  const commentBox = {
     container: {
-      displays: "flex flex-col items-center",
-      paddings: "px-8 pt-6.25",
-      sizes: "h-full",
+      displays: "flex flex-col items-center gap-2.5",
+      paddings: "pt-5 px-8 pb-6",
       styles: "bg-white",
     },
     body: {
@@ -43,7 +36,8 @@ export default function CommunityById({
       styles: "bg-bright-purple rounded-md ",
       fonts: "text-white text-sm font-bold",
     },
-  };*/
+  };
+
   return (
     <div>
       <div className={cn(container)}>
@@ -59,11 +53,13 @@ export default function CommunityById({
           member={post?.member}
         />
       </div>
-      <div className={cn(comment)}>
-        <div className="text-lg font-bold">답변하기</div>
-        <CommentCard.Create mutate={createComment} />
+      <div className={cn(commentBox.container)}>
+        <div className={cn(commentBox.body)}>
+          <div className="text-lg font-bold">답변하기</div>
+          <CommentCard.Create mutate={createComment} />
+        </div>
       </div>
-      <div className={cn(comment)}>
+      <div className={cn(commentBox.container)}>
         <div className="text-lg font-bold w-full max-w-120">
           답변 {answers?.length ?? "0"}
         </div>
