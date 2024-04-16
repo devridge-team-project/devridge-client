@@ -55,13 +55,13 @@ export default function Studies({ posts }: { posts?: Study[] }) {
                   <div className="text-bold text-xxs mt-[11px]">{title}</div>
                   <div className="text-[7px] mt-[9px]">{content}</div>
                   <div className="mt-[13.5px] flex">
-                    <div className="text-[9px] mr-[7px] text-blue-grey">
+                    <div className="text-[9px] mr-[7px] text-bright-purple font-bold">
                       위치
                     </div>
                     <div className="text-[9px]">{location}</div>
                   </div>
                   <div className="mt-[5px] flex ">
-                    <div className="text-[9px] mr-[7px] text-blue-grey">
+                    <div className="text-[9px] mr-[7px] text-bright-purple font-bold">
                       현재인원
                     </div>
                     <div className="text-[9px]">

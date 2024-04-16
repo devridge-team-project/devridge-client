@@ -117,6 +117,8 @@ export default function ProjectById({
           <div className="text-lg font-bold">답변하기</div>
           <CommentCard.Create mutate={createComment} />
         </div>
+      </div>
+      <div className={cn(commentBox.container)}>
         <div className="text-lg font-bold w-full max-w-120">
           답변 {answers?.length ?? "0"}
         </div>
