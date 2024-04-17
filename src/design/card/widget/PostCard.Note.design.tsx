@@ -9,7 +9,7 @@ export default function PostCardNoteDesign({
   createdAt,
 }: PostCardNoteProps) {
   const container = {
-    displays: "flex",
+    displays: "flex justify-between",
     paddings: "pt-7.5 px-9 ",
     sizes: "w-full h-33",
     styles: "bg-white",
@@ -23,6 +23,9 @@ export default function PostCardNoteDesign({
       fonts: "text-xxs",
       sizes: "w-75 h-14.5",
       styles: "line-clamp-4",
+    },
+    date: {
+      fonts: "text-xxs",
     },
   };
   console.log(content, createdAt);
@@ -39,7 +42,7 @@ export default function PostCardNoteDesign({
         <div className={cn(textBox.title)}>{userInformation?.nickname}</div>
         <div className={cn(textBox.content)}>{content}</div>
       </div>
-      <div>{createdAt}</div>
+      <div className={cn(textBox.date)}>{createdAt}</div>
     </Link>
   );
 }

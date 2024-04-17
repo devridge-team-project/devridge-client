@@ -21,7 +21,7 @@ export default function NoteById({
 
   const textBox = {
     container: {
-      displays: "flex",
+      displays: "flex justify-between",
       paddings: "pt-7.5 px-9 ",
       sizes: "w-full h-33",
       styles: "bg-white",
@@ -38,6 +38,9 @@ export default function NoteById({
       fonts: "text-xxs",
       sizes: "w-75 h-14.5",
       styles: "line-clamp-4",
+    },
+    date: {
+      fonts: "text-xxs",
     },
   };
   console.log(posts);
@@ -58,7 +61,7 @@ export default function NoteById({
 
               <div className={cn(textBox.content)}>{note.content}</div>
             </div>
-            <div>{note.createdAt}</div>
+            <div className={cn(textBox.date)}>{note.createdAt}</div>
           </div>
         ))}
       </div>
