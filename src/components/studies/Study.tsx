@@ -73,7 +73,7 @@ function StudyById({
     <div className={cn(container)}>
       <div className={cn(study.container)}>
         <div className={cn(study.body)}>
-          <div className={cn(study.tag)}>사이드 프로젝트</div>
+          <div className={cn(study.tag)}>{post?.category}</div>
           <div className={cn(titleBox.container)}>
             <div className={cn(titleBox.title)}>{post?.title}</div>
           </div>
@@ -94,14 +94,7 @@ function StudyById({
             </div>
             <div className="text-sm">{post?.location}</div>
           </div>
-          <div className="mt-[5px] flex ">
-            <div className="text-sm mr-[7px] text-bright-purple font-bold">
-              현재인원
-            </div>
-            <div className="text-sm">
-              {post?.currentPeople}/{post?.totalPeople}
-            </div>
-          </div>
+
           <div className="pt-7.5 flex gap-3 text-xs">
             <button>추천해요</button>
             <button>저장하기</button>
