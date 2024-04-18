@@ -1,9 +1,10 @@
-import { PostCard } from "@/design";
+import { Button, PostCard } from "@/design";
 import { Community } from "@/interface";
 import { cn } from "@/util";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Communities({ posts }: { posts?: Community[] }) {
+  const navigate = useNavigate();
   const container = {
     displays: "flex flex-col gap-2",
     paddings: "pb-2",
@@ -58,6 +59,12 @@ export default function Communities({ posts }: { posts?: Community[] }) {
             member={post.member}
           />
         ))}
+        <Button.Float
+          image="/images/icons/writing-white.svg"
+          onClick={() => {
+            navigate("post");
+          }}
+        />
       </div>
     </>
   );
