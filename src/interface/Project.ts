@@ -7,7 +7,7 @@ export interface Project {
   updatedAt: string;
   title: string;
   content: string;
-  roles: string | null;
+  roles: string[];
   member: Member;
   views: number;
   likes: number;

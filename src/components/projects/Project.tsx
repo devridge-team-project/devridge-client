@@ -98,7 +98,7 @@ export default function ProjectById({
           <div className="text-xxs">{post?.content}</div>
           <div className="text-sm font-bold my-2">모집 역할</div>
           <div className="flex gap-2">
-            {post?.roles?.split(",").map((role) => (
+            {post?.roles?.map((role) => (
               <div key={role} className={cn(project.role)}>
                 {role}
               </div>
