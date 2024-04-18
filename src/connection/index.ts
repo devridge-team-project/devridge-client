@@ -3,3 +3,4 @@ export { default as questionApi } from "./api/question";
 export { default as signApi } from "./api/sign";
 export { default as chatApi } from "./api/chat";
 export { default as NoteApi } from "./api/note";
+export { default as skillApi } from "./api/skill";

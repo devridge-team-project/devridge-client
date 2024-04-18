@@ -1,9 +1,10 @@
 import { Project } from "@/interface";
 import { cn } from "@/util";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { PostCard } from "@/design";
 
 export default function Projects({ posts }: { posts?: Project[] }) {
+  const navigate = useNavigate();
   const header = {
     positions: "fixed top-35 left-0",
     sizes: "w-full h-77",
@@ -33,7 +34,10 @@ export default function Projects({ posts }: { posts?: Project[] }) {
             <div>사이드 프로젝트 멤버를 찾거나</div>
             <div>다양한 목적의 모집글을 올릴 수 있어요!</div>
           </div>
-          <button className="bg-bright-purple w-80 h-12.5 rounded-md text-white">
+          <button
+            className="bg-bright-purple w-80 h-12.5 rounded-md text-white"
+            onClick={() => navigate("post")}
+          >
             모집글 작성하기
           </button>
         </div>
