@@ -11,16 +11,12 @@ export interface Study {
   dislikes: number;
   views: number;
   location: string | null;
-  totalPeople: number | null;
-  currentPeople: number | null;
   member: Member;
 }
 
-export interface StudyPost {
+export interface StudyRequest {
   title: string;
   content: string;
   category: string;
   location: string;
-  totalPeople: number;
-  currentPeople: number;
 }

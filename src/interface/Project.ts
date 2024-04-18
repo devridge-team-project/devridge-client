@@ -17,7 +17,7 @@ export interface Project {
   isRecruiting: boolean;
 }
 
-export interface ProjectPost {
+export interface ProjectRequest {
   title: string;
   content: string;
   skillIds: number[];
