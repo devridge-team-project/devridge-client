@@ -1,28 +1,25 @@
-import { SelectProps } from "@/interface";
+import { cn } from "@/util";
+import { InputProps } from "@/interface";
 
-export default function Select({
+export default function TextArea<T extends string | number | undefined>({
   state,
-  selectOptions,
   placeholder,
-}: SelectProps<number>) {
+  options,
+}: InputProps<T>) {
   const [value, setValue] = state;
+  const onChangeValue = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setValue(e.target.value as T);
+  };
+  const container = {
+    sizes: "w-full min-h-80",
+    styles: "focus:outline-none text-xl",
+  };
   return (
-    <select
-      className={
-        value === 0
-          ? "text-gray-500 "
-          : "" + "w-full rounded-md border-2 p-4 focus:outline-blue-500"
-      }
-      onChange={(e) => setValue(e.target.value as unknown as number)}
-    >
-      <option value={0} disabled selected hidden>
-        {placeholder}
-      </option>
-      {selectOptions.map(({ value, title }) => (
-        <option key={value} value={value} className="text-black">
-          {title}
-        </option>
-      ))}
-    </select>
+    <textarea
+      className={cn(container)}
+      value={value}
+      onChange={onChangeValue}
+      placeholder={placeholder ?? ""}
+    />
   );
 }
