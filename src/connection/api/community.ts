@@ -1,11 +1,11 @@
 import httpRequest from "../axios";
 import {
   Community,
-  CommunityPost,
+  CommunityRequest,
   Project,
-  ProjectPost,
+  ProjectRequest,
   Study,
-  StudyPost,
+  StudyRequest,
   Answer,
   Content,
 } from "@/interface";
@@ -20,11 +20,10 @@ function getCommunity(id: number) {
   return api.get<Community>(`/api/community/${id}`);
 }
 
-const postCommunity = ({ title, content, hashtags = [] }: CommunityPost) => {
+const postCommunity = ({ title, content }: CommunityRequest) => {
   return api.post("api/community", {
     title,
     content,
-    hashtags,
   });
 };
 
@@ -42,7 +41,7 @@ const postProject = ({
   skillIds,
   roles,
   meeting,
-}: ProjectPost) => {
+}: ProjectRequest) => {
   return api.post("api/community/projects", {
     title,
     content,
@@ -60,21 +59,12 @@ export const getStudy = (id: number) => {
   return api.get<Study>(`/api/community/studies/${id}`);
 };
 
-const postStudy = ({
-  title,
-  content,
-  category,
-  location,
-  totalPeople,
-  currentPeople,
-}: StudyPost) => {
+const postStudy = ({ title, content, category, location }: StudyRequest) => {
   return api.post("api/community/studies", {
     title,
     content,
     category,
     location,
-    totalPeople,
-    currentPeople,
   });
 };
 
