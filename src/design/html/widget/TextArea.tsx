@@ -12,7 +12,7 @@ export default function TextArea<T extends string | number | undefined>({
   };
   const container = {
     sizes: "w-full min-h-80",
-    styles: "focus:outline-none text-xl",
+    styles: "focus:outline-none text-1xl resize-none",
   };
   return (
     <textarea

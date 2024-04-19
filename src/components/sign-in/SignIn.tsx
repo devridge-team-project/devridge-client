@@ -25,8 +25,12 @@ export default function SignIn({ signIn }: { signIn: OnClick<SignInRequest> }) {
     <div className={cn(container)}>
       <div className={cn(body)}>
         <div className="text-3xl text-bright-purple font-bold">로그인</div>
-        <Input state={email} />
-        <Input state={password} />
+        <Input state={email} placeholder="아이디를 입력하세요" />
+        <Input
+          type="password"
+          state={password}
+          placeholder="비밀번호를 입력하세요"
+        />
         <Button
           title="로그인"
           onClick={() => signIn({ email: email[0], password: password[0] })}

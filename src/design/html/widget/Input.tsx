@@ -1,6 +1,7 @@
 import { InputProps } from "@/interface";
 
 export default function Input<T extends string | number | undefined>({
+  type,
   state,
   placeholder,
   options,
@@ -15,11 +16,11 @@ export default function Input<T extends string | number | undefined>({
     <input
       className={`${
         !noOutline && "border-2 p-4 focus:outline-blue-500 rounded-md"
-      } w-full text-xl`}
+      } w-full text-1xl`}
       value={value}
       onChange={onChangeValue}
       placeholder={placeholder ?? ""}
-      type="text"
+      type={type ?? "text"}
     />
   );
 }

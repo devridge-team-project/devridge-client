@@ -13,15 +13,15 @@ export default function CommunityPost({
   return (
     <div>
       <div>
-        <div className="text-xl font-bold">제목</div>
+        <div className="text-xl font-bold mb-3.75">제목</div>
         <Input
           state={title}
           placeholder="제목을 5자 이상 입력해주세요."
           options={{ noOutline: true }}
         />
       </div>
-      <div>
-        <div className="text-xl font-bold">내용</div>
+      <div className="mt-7.5">
+        <div className="text-xl font-bold mb-3.75">내용</div>
         <TextArea state={content} placeholder="궁금한 것을 작성해보세요." />
       </div>
       <Button
