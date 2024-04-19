@@ -6,7 +6,7 @@ import { Questions, Question } from "./questions";
 import { Projects, Project, ProjectPost } from "./projects";
 import { Studies, Study, StudyPost } from "./studies";
 import { Notes, Note } from "./notes";
-import { MyPage } from "./mypage";
+import { MyPage, UpdatePage, DeletePage, ChangePasswordPage } from "./mypage";
 import { SignIn } from "./sign-in";
 import { SignUp, Join } from "./sign-up";
 import { Notices, Notice } from "./notices";
@@ -27,6 +27,9 @@ export default function App() {
           </Route>
           <Route path="mypage">
             <Route index element={<MyPage />} />
+            <Route path="update" element={<UpdatePage />} />
+            <Route path="delete" element={<DeletePage />} />
+            <Route path="changePassword" element={<ChangePasswordPage />} />
           </Route>
           <Route path="communities">
             <Route index element={<Communities />} />

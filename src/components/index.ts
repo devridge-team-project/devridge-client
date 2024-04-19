@@ -7,5 +7,5 @@ export * from "./sign-up";
 export * from "./studies";
 export * from "./chat";
 export * from "./notes";
-
+export * from "./mypage";
 export { default as Banner } from "./Banner";
