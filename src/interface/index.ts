@@ -14,3 +14,4 @@ export * from "./Sign";
 export * from "./Chat";
 export * from "./Note";
 export * from "./Skill";
+export * from "./User";
