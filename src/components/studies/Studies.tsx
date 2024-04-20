@@ -6,8 +6,8 @@ import { Link, useNavigate } from "react-router-dom";
 export default function Studies({ posts }: { posts?: Study[] }) {
   const navigate = useNavigate();
   const container = {
-    displays: "flex justify-center flex-wrap",
-    paddings: "mt-40",
+    displays: "flex flex-wrap",
+    paddings: "mx-8.75 mt-40",
     styles: "bg-white",
   };
   const header = {
@@ -33,26 +33,25 @@ export default function Studies({ posts }: { posts?: Study[] }) {
         {posts?.map(({ id, category, title, content, location }, idx) => {
           return (
             <div
-              className={`h-40 w-5/12 border-[1px] border-gray-200 mt-2.5 pt-2.5 pl-3 pr-3.5 ${
-                idx % 2 === 0 ? "mr-2.5" : ""
-              } `}
+              className={`h-40 w-6/12 border-2 box-border border-gray-200 mt-2.5 p-2.5`}
             >
               <Link to={`${id}`}>
-                <div className="bg-white-purple border-r-2 text-center text-[6px] text-purple w-12.5 h-3  text-center">
+                <div className="w-20 bg-white-purple border-r-2 text-center text-xxs text-bright-purple">
                   {category}
                 </div>
                 <div className="text-bold text-xxs mt-[11px]">{title}</div>
-                <div className="text-[7px] mt-[9px]">{content}</div>
+                <div className="text-xxs mt-[9px]">{content}</div>
                 <div className="mt-[13.5px] flex">
-                  <div className="text-[9px] mr-[7px] text-bright-purple font-bold">
+                  <div className="text-xxs mr-[7px] text-bright-purple font-bold">
                     위치
                   </div>
-                  <div className="text-[9px]">{location}</div>
+                  <div className="text-xxs">{location}</div>
                 </div>
               </Link>
             </div>
           );
         })}
+
         <Button.Float
           image="/images/icons/writing-white.svg"
           onClick={() => {

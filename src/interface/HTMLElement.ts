@@ -4,6 +4,7 @@ export type Script = string | string[] | undefined;
 
 export interface InputProps<T> {
   state: State<T>;
+  maxLength?: number;
   type?: string;
   placeholder?: string;
   options?: {

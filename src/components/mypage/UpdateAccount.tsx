@@ -85,8 +85,15 @@ export default function UpdateAccount({
         </div>
       </div>
       <div className="mt-7.5">
-        <Tag title="자기소개(필수)" />
-        <Input state={introduction} />
+        <div className="flex justify-between">
+          <Tag title="자기소개(필수)" />
+          <div>{introduction[0].length}/50</div>
+        </div>
+        <Input
+          placeholder="자기소개를 해주세요"
+          maxLength={50}
+          state={introduction}
+        />
       </div>
       <div className="mt-7.5">
         <Tag title="보유 스킬" />
