@@ -5,7 +5,7 @@ import { Communities, Community, CommunityPost } from "./communities";
 import { Questions, Question } from "./questions";
 import { Projects, Project, ProjectPost } from "./projects";
 import { Studies, Study, StudyPost } from "./studies";
-import { Notes, Note } from "./notes";
+import { Notes, Note, NotePost } from "./notes";
 import { MyPage, UpdatePage, DeletePage, ChangePasswordPage } from "./mypage";
 import { SignIn } from "./sign-in";
 import { SignUp, Join } from "./sign-up";
@@ -59,6 +59,7 @@ export default function App() {
           <Route path="notes">
             <Route index element={<Notes />} />
             <Route path=":id" element={<Note />} />
+            <Route path="post" element={<NotePost />} />
           </Route>
           <Route path="notices">
             <Route index element={<Notices />} />

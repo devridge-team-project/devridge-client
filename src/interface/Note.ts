@@ -14,7 +14,7 @@ export interface Note {
   createdAt: string;
 }
 
-export interface NotePost {
+export interface NoteRequest {
   content: string;
   receiverId: number;
 }
