@@ -1,6 +1,6 @@
 import { OnClick, CommunityRequest } from "@/interface";
 import { useState } from "react";
-import { Button, Input, TextArea } from "@/design";
+import { Tag, Button, Input, TextArea } from "@/design";
 
 export default function CommunityPost({
   communityPost,
@@ -11,9 +11,9 @@ export default function CommunityPost({
   const content = useState<string>("");
 
   return (
-    <div>
+    <div className="mx-8.75">
       <div>
-        <div className="text-xl font-bold mb-3.75">제목</div>
+        <Tag title="제목" />
         <Input
           state={title}
           placeholder="제목을 5자 이상 입력해주세요."
@@ -21,7 +21,7 @@ export default function CommunityPost({
         />
       </div>
       <div className="mt-7.5">
-        <div className="text-xl font-bold mb-3.75">내용</div>
+        <Tag title="내용" />
         <TextArea state={content} placeholder="궁금한 것을 작성해보세요." />
       </div>
       <Button
