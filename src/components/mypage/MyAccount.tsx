@@ -10,7 +10,7 @@ export default function MyAccount({
   user?: User;
 }) {
   return (
-    <div className="mt-[25px]">
+    <div className="mx-8.75">
       <div>
         <div className="flex">
           <img
@@ -19,7 +19,7 @@ export default function MyAccount({
             alt="profileImage"
           />
           <div className="ml-3.5">
-            <div className="text-1xl font-bold text-blue-grey">
+            <div className="text-1xl font-bold text-bright-purple">
               {user?.nickname}
             </div>
             <div className="text-1xl">{user?.occupation}</div>
@@ -27,24 +27,26 @@ export default function MyAccount({
         </div>
 
         <Link to="update" state={{ user }}>
-          <div className={`mt-[38px] bg-gray-100 h-10 w-80 font-bold`}>
+          <div className={`mt-[38px] bg-gray-100 py-5 font-bold text-center`}>
             회원정보 수정
           </div>
         </Link>
         <div className="font-bold mt-[70px]">계정</div>
-        <div className="mt-5 w-80">
+        <div className="mt-5">
           <Link to="changePassword">비밀번호 변경</Link>
         </div>
-        <div className="mt-5 w-80">
+        <div className="mt-5">
           <Link to="delete" state={{ nickname: user?.nickname }}>
             회원탈퇴
           </Link>
         </div>
-        <Button
-          title="로그아웃"
-          onClick={() => logout}
-          options={{ size: "full" }}
-        />
+        <div className="mt-5">
+          <Button
+            title="로그아웃"
+            onClick={() => logout}
+            options={{ size: "full" }}
+          />
+        </div>
       </div>
     </div>
   );
