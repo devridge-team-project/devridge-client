@@ -1,5 +1,5 @@
 import { Note } from "@/interface";
-import { cn } from "@/util";
+import { Moment, cn } from "@/util";
 export default function NoteById({
   nickname,
   receiverId,
@@ -54,14 +54,16 @@ export default function NoteById({
           <div key={note.id} className={cn(textBox.container)}>
             <div>
               {receiverId === note.senderId ? (
-                <div className={cn(textBox.sendTitle)}>보낸 쪽지</div>
-              ) : (
                 <div className={cn(textBox.receiveTitle)}>받은 쪽지</div>
+              ) : (
+                <div className={cn(textBox.sendTitle)}>보낸 쪽지</div>
               )}
 
               <div className={cn(textBox.content)}>{note.content}</div>
             </div>
-            <div className={cn(textBox.date)}>{note.createdAt}</div>
+            <div className={cn(textBox.date)}>
+              {Moment.getDate(note.createdAt)}
+            </div>
           </div>
         ))}
       </div>

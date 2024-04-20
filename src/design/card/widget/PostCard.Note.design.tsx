@@ -1,5 +1,5 @@
 import { PostCardNoteProps } from "@/interface";
-import { cn } from "@/util";
+import { cn, Moment } from "@/util";
 import { Link } from "react-router-dom";
 
 export default function PostCardNoteDesign({
@@ -42,7 +42,9 @@ export default function PostCardNoteDesign({
         <div className={cn(textBox.title)}>{userInformation?.nickname}</div>
         <div className={cn(textBox.content)}>{content}</div>
       </div>
-      <div className={cn(textBox.date)}>{createdAt}</div>
+      <div className={cn(textBox.date)}>
+        {Moment.getDate(createdAt as string)}
+      </div>
     </Link>
   );
 }

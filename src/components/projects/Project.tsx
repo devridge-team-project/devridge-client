@@ -1,6 +1,7 @@
 import { PostCard, CommentCard } from "@/design";
 import { Answer, OnClick, Project } from "@/interface";
-import { cn } from "@/util";
+import { useNavigate } from "react-router-dom";
+import { Moment, cn } from "@/util";
 
 export default function ProjectById({
   post,
@@ -72,6 +73,8 @@ export default function ProjectById({
       fonts: "text-white text-sm font-bold",
     },
   };
+  const navigate = useNavigate();
+  console.log(post);
 
   return (
     <div className={cn(container)}>
@@ -90,7 +93,7 @@ export default function ProjectById({
             <div>의 프로젝트</div>
           </div>
           <div className="flex gap-1 pt-4.25 text-xs text-bright-gray">
-            <div>{post?.createdAt}</div>
+            <div>{Moment.getDate(post?.createdAt as string)}</div>
             <div>조회수 {post?.views}</div>
             <div>추천수 {post?.likes}</div>
           </div>
@@ -98,11 +101,11 @@ export default function ProjectById({
           <div className="text-xxs">{post?.content}</div>
           <div className="text-sm font-bold my-2">모집 역할</div>
           <div className="flex gap-2">
-            {post?.roles?.map((role) => (
+            {/*post?.roles?.map((role) => (
               <div key={role} className={cn(project.role)}>
                 {role}
               </div>
-            ))}
+            ))*/}
           </div>
           <div className="pt-7.5 flex gap-3 text-xs">
             <button>추천해요</button>
@@ -113,7 +116,14 @@ export default function ProjectById({
       </div>
       <div className={cn(commentBox.container)}>
         <div className={cn(commentBox.body)}>
-          <button className={cn(commentBox.button)}>쪽지 보내기</button>
+          <button
+            className={cn(commentBox.button)}
+            onClick={() =>
+              navigate("/notes/post", { state: { id: post?.member.id } })
+            }
+          >
+            쪽지 보내기
+          </button>
           <div className="text-lg font-bold">답변하기</div>
           <CommentCard.Create mutate={createComment} />
         </div>
