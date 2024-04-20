@@ -11,7 +11,7 @@ export default function TextArea<T extends string | number | undefined>({
     setValue(e.target.value as T);
   };
   const container = {
-    sizes: "w-full min-h-80",
+    sizes: "w-full",
     styles: "focus:outline-none text-1xl resize-none",
   };
   return (
