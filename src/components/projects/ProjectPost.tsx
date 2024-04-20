@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { OnClick, Skill, ProjectRequest } from "@/interface";
-import { Input, TextArea, Button, SelectButton } from "@/design";
+import { Tag, Input, TextArea, Button, SelectButton } from "@/design";
 import { project } from "@/assets";
 
 export default function ProjectPost({
@@ -61,23 +61,25 @@ export default function ProjectPost({
   }, [searchWord[0]]);
 
   return (
-    <div>
+    <div className="mx-8.75">
       <div>
-        <div>
-          <div className="text-xl font-bold mt-4 mb-2.5">제목 </div>
-          <Input
-            state={title}
-            placeholder="제목을 5자 이상 입력해주세요."
-            options={{ noOutline: true }}
-          />
-        </div>
-        <div>
-          <div className="text-xl font-bold mt-4 mb-2.5">프로젝트 요약</div>
-          <TextArea state={content} placeholder="궁금한 것을 작성해보세요." />
-        </div>
+        <Tag title="제목" />
+        <Input
+          state={title}
+          placeholder="제목을 5자 이상 입력해주세요."
+          options={{ noOutline: true }}
+        />
       </div>
-      <div>
-        <div className="text-xl font-bold mt-4 mb-2.5">모집 분야</div>
+      <div className="mt-7.5">
+        <Tag title="프로젝트 요약" />
+        <TextArea
+          state={content}
+          placeholder="프로젝트 요약을 입력하세요.
+예시 - 온/오프라인으로 달리기 모임을 만들고 찾을 수 있는 앱을 기획 중입니다. 현재 기획자 1명, 백엔드 개발자 1명이 있고, 함께 하실 디자이너와 프론트 개발자를 찾고 있어요!"
+        />
+      </div>
+      <div className="mt-7.5">
+        <Tag title="모집분야" />
         <div className="flex">
           {project.roles.map(({ id, value }) => (
             <SelectButton
@@ -93,24 +95,25 @@ export default function ProjectPost({
           ))}
         </div>
       </div>
-      <div className=" font-bold text-xl mt-5">기술 스택</div>
-      <Input placeholder="스킬을 검색해보세요" state={searchWord} />
-      {searchWord[0] && (
-        <div className="max-h-40 ">
-          {searchItems.map(({ id, skillName }) => (
-            <div
-              onClick={onAddSkillHandler}
-              data-skill-name={skillName}
-              className="hover:bg-gray-100"
-            >
-              {skillName}
-            </div>
-          ))}
-        </div>
-      )}
-
-      <div className="mb-4">
-        <div className="text-xl font-bold mt-4 mb-2.5">참여방식</div>
+      <div className="mt-7.5">
+        <Tag title="기술스택" />
+        <Input placeholder="스킬을 검색해보세요" state={searchWord} />
+        {searchWord[0] && (
+          <div className="max-h-40 ">
+            {searchItems.map(({ id, skillName }) => (
+              <div
+                onClick={onAddSkillHandler}
+                data-skill-name={skillName}
+                className="hover:bg-gray-100"
+              >
+                {skillName}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+      <div className="mt-7.5">
+        <Tag title="참여방식" />
         <div className="flex">
           {project.meeting.map(({ id, value }) => (
             <SelectButton
@@ -126,24 +129,26 @@ export default function ProjectPost({
           ))}
         </div>
       </div>
-      <Button
-        title="작성하기"
-        onClick={() =>
-          projectPost({
-            title: title[0],
-            content: content[0],
-            meeting,
-            roles,
-            skillIds: skills.map((skillName) => {
-              const matchedSkill = skillInfo?.find(
-                (skill) => skill.skillName === skillName
-              );
-              return matchedSkill?.id;
-            }) as number[],
-          })
-        }
-        options={{ size: "full" }}
-      />
+      <div className="mt-7.5">
+        <Button
+          title="작성하기"
+          onClick={() =>
+            projectPost({
+              title: title[0],
+              content: content[0],
+              meeting,
+              roles,
+              skillIds: skills.map((skillName) => {
+                const matchedSkill = skillInfo?.find(
+                  (skill) => skill.skillName === skillName
+                );
+                return matchedSkill?.id;
+              }) as number[],
+            })
+          }
+          options={{ size: "full" }}
+        />
+      </div>
     </div>
   );
 }
