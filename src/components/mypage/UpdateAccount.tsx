@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Input } from "@/design";
+import { Tag, Button, Input } from "@/design";
 import { OnClick, Skill, User } from "@/interface";
 
 export default function UpdateAccount({
@@ -11,9 +11,10 @@ export default function UpdateAccount({
   skillInfo?: Skill[];
   user: User;
 }) {
-  const [skill, setSkill] = useState<string[]>([]);
   const introduction = useState<string>("");
   const searchWord = useState<string>("");
+
+  const [skill, setSkill] = useState<string[]>([]);
   const [searchItems, setSearchItems] = useState<Skill[]>([]);
 
   const data = {
@@ -66,24 +67,29 @@ export default function UpdateAccount({
       ]);
     }
   }, [skillInfo]);
+  console.log(user);
 
   return (
-    <div>
-      <div className={`w-80 text-1xl text-blue-grey font-bold`}>
+    <div className="mx-8.75">
+      <div className={`text-1xl text-bright-purple font-bold`}>
         회원정보 수정
       </div>
-      <img
-        src={user?.imageUrl}
-        className="mt-7.5 h-25 w-25 rounded-full bg-gray-200 "
-        alt="profileImage"
-      />
-      <div className="mt-7 text-2xl text-blue-grey font-bold">
-        {user?.nickname}
+      <div className="mt-7.5 flex flex-col items-center">
+        <img
+          src={user?.imageUrl}
+          className="h-25 w-25 rounded-full bg-gray-200 "
+          alt="profileImage"
+        />
+        <div className="text-2xl mt-5 text-bright-purple font-bold">
+          {user?.nickname}
+        </div>
       </div>
-      <div>
-        <div className="font-bold text-xs">자기소개(필수)</div>
+      <div className="mt-7.5">
+        <Tag title="자기소개(필수)" />
         <Input state={introduction} />
-        <div className=" font-bold text-xs mt-5">보유 스킬</div>
+      </div>
+      <div className="mt-7.5">
+        <Tag title="보유 스킬" />
         <Input placeholder="스킬을 검색해보세요" state={searchWord} />
         {searchWord[0] && (
           <div className="max-h-40 ">
@@ -99,19 +105,20 @@ export default function UpdateAccount({
             ))}
           </div>
         )}
-
-        <div className="flex mb-12.5 max-h-84 w-full flex-wrap gap-2 overflow-hidden">
-          {skill.map((skill) => (
-            <button
-              key={skill}
-              onClick={onRemoveSkillHandler}
-              data-skill={skill}
-              className="bg-blue-500 border-blue-500 text-white font-bold flex h-10 grow items-center justify-center rounded-full border-2 px-4 duration-500"
-            >
-              {`${skill} x`}
-            </button>
-          ))}
-        </div>
+      </div>
+      <div className="flex mt-3.5 flex-wrap gap-2 overflow-hidden">
+        {skill.map((skill) => (
+          <button
+            key={skill}
+            onClick={onRemoveSkillHandler}
+            data-skill={skill}
+            className="bg-blue-500 border-blue-500 text-white font-bold flex h-10 grow items-center justify-center rounded-full border-2 px-4 duration-500"
+          >
+            {`${skill} x`}
+          </button>
+        ))}
+      </div>
+      <div className="mt-12.5">
         <Button
           title="저장하기"
           onClick={() => patchUser(formData)}
