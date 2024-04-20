@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { Client } from "@stomp/stompjs";
 import { PrivateMessage } from "@/interface";
 import { cn } from "@/util";
-import { getCookie } from "@/util/cookies";
 import { useLocation, useParams } from "react-router-dom";
 
 const { VITE_CHAT_URL } = import.meta.env;
@@ -29,7 +28,7 @@ function Message({ id, posts }: { id: number; posts?: PrivateMessage[] }) {
     const stomp = new Client({
       brokerURL: `${VITE_CHAT_URL}/api/ws`,
       connectHeaders: {
-        Authorization: `Bearer ${getCookie("accessToken")}`,
+        // Authorization: `Bearer ${getCookie("accessToken")}`,
         "Content-Type": "application/json",
       },
       debug: (str: string) => {
