@@ -4,7 +4,9 @@ import { useLocation } from "react-router-dom";
 import { UpdateAccount } from "@/components";
 
 export default function UpdatePage() {
-  const { state: user } = useLocation();
+  const {
+    state: { user },
+  } = useLocation();
   const { data: skillInfo } = useQuery({
     queryKey: ["skill"],
     queryFn: skillApi.getAll,
