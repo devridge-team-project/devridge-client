@@ -1,11 +1,11 @@
 import { LineBreaks } from "@/design/text";
-import { Script } from "@/interface";
+import { ModalAlertProps, Script } from "@/interface";
 import { useWidgetStore } from "@/shared";
 import { cn } from "@/util";
 import ModalDesign from "../widget/Modal.design";
 import { Button } from "@/design/html";
 
-function Alert({ script }: { script: Script }) {
+function Alert({ isVisible, script }: ModalAlertProps) {
   const { clearModal } = useWidgetStore();
   const modal = {
     displays: "flex flex-col items-center gap-7",
@@ -16,9 +16,8 @@ function Alert({ script }: { script: Script }) {
     sizes: "h-13",
     text: "text-base font-bold",
   };
-
   return (
-    <ModalDesign classNames={cn(modal)}>
+    <ModalDesign isVisible={isVisible} classNames={cn(modal)}>
       <img
         src="/images/icons/warning.svg"
         alt="warning"
