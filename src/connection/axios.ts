@@ -1,5 +1,4 @@
 import Axios, { AxiosRequestConfig, AxiosError } from "axios";
-import { getCookie } from "@/util/cookies";
 
 const {
   VITE_SERVER_URL: serverOrigin,
@@ -73,6 +72,14 @@ const http = (
     },
     patch: <Request = any, Response = unknown>(url: string, data?: Request) => {
       return axiosJson
+        .patch<Response>(url, data, axiosRequestConfig)
+        .then((res) => res.data);
+    },
+    patchFormData: <Request = any, Response = unknown>(
+      url: string,
+      data?: Request
+    ) => {
+      return axiosFormData
         .patch<Response>(url, data, axiosRequestConfig)
         .then((res) => res.data);
     },
