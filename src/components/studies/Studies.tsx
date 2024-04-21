@@ -30,7 +30,7 @@ export default function Studies({ posts }: { posts?: Study[] }) {
         </div>
       </div>
       <div className={cn(container)}>
-        {posts?.map(({ id, category, title, content, location }, idx) => {
+        {posts?.map(({ id, category, title, content, location }) => {
           return (
             <div
               className={`h-40 w-6/12 border-2 box-border border-gray-200 mt-2.5 p-2.5`}

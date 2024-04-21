@@ -10,13 +10,16 @@ function getUser() {
 const changePassword = (password: string) => {
   return api.patch("api/users/password", { password });
 };
-
+function postUser(data: FormData) {
+  return api.postMultipart("/api/users", data);
+}
 function patchUser(data: FormData) {
   return api.patchFormData("/api/users", data);
 }
 
 const userApi = {
   get: getUser,
+  post: postUser,
   patch: patchUser,
   patchPassword: changePassword,
 };

@@ -54,7 +54,7 @@ export default function ProjectPost({
     if (skillInfo) {
       setSearchItems([
         ...skillInfo.filter(
-          ({ id, skillName }) => skillName.includes(searchWord[0]) === true
+          ({ skillName }) => skillName.includes(searchWord[0]) === true
         ),
       ]);
     }
@@ -100,7 +100,7 @@ export default function ProjectPost({
         <Input placeholder="스킬을 검색해보세요" state={searchWord} />
         {searchWord[0] && (
           <div className="max-h-40 ">
-            {searchItems.map(({ id, skillName }) => (
+            {searchItems.map(({ skillName }) => (
               <div
                 onClick={onAddSkillHandler}
                 data-skill-name={skillName}

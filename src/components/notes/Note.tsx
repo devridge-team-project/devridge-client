@@ -7,7 +7,7 @@ export default function NoteById({
 }: {
   nickname: string;
   receiverId: number;
-  posts?: Note[];
+  posts?: Omit<Note, "userInformation">[];
 }) {
   const header = {
     positions: "fixed top-35 left-0",

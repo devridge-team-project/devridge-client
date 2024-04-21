@@ -42,6 +42,7 @@ const http = (
     typeof version !== "undefined" ? [baseURL, version].join("/") : baseURL
   );
   const axiosFormData = axios("form-data", baseURL ?? "/api");
+  const axiosMultipart = axios("multipart/form-data", baseURL ?? "/api");
   const axiosRequestConfig = withCredentials
     ? ({ withCredentials: true } as AxiosRequestConfig)
     : ({} as AxiosRequestConfig);
@@ -64,6 +65,12 @@ const http = (
       return axiosFormData
         .post<Response>(url, data, axiosRequestConfig)
         .then((res) => res.data);
+    },
+    postMultipart: function <Request = any, Response = unknown>(
+      url: string,
+      data?: Request | object
+    ) {
+      return axiosMultipart.post<Response>(url, data).then((res) => res.data);
     },
     put: <Request = any, Response = unknown>(url: string, data?: Request) => {
       return axiosJson

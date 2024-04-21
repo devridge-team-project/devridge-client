@@ -5,7 +5,6 @@ export default function TextArea<T extends string | number | undefined>({
   state,
   placeholder,
   maxLength,
-  options,
 }: InputProps<T>) {
   const [value, setValue] = state;
   const onChangeValue = (e: React.ChangeEvent<HTMLTextAreaElement>) => {

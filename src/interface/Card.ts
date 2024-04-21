@@ -27,7 +27,7 @@ export interface PostCardNoteProps
 export interface PostCardProjectProps
   extends Omit<PostCardProps, "commentCount"> {
   dislikes: number;
-  roles: string | null;
+  roles: string[] | null;
   isRecruiting: boolean;
   meeting: string;
   skills: Skill[];

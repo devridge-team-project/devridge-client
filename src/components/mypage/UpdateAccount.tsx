@@ -52,7 +52,7 @@ export default function UpdateAccount({
     if (skillInfo) {
       setSearchItems([
         ...skillInfo.filter(
-          ({ id, skillName }) => skillName.includes(searchWord[0]) === true
+          ({ skillName }) => skillName.includes(searchWord[0]) === true
         ),
       ]);
     }
