@@ -10,6 +10,7 @@ export interface Answer {
   updatedAt: string;
 }
 
-export interface Content {
+export interface AnswerRequest {
+  id: number;
   content: string;
 }

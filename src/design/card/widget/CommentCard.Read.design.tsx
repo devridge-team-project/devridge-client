@@ -6,7 +6,6 @@ export default function CommentCardQuestionDesign({
   createdAt,
   content,
   likes,
-  coffeeChatMutate,
   likeMutate,
 }: CommentCardReadProps) {
   const container = {
@@ -41,12 +40,12 @@ export default function CommentCardQuestionDesign({
             {member.introduction}
           </div>
         </div>
-        <button onClick={coffeeChatMutate} className={cn(coffeeChatButton)}>
+        <button onClick={() => {}} className={cn(coffeeChatButton)}>
           커피챗 신청하기
         </button>
       </div>
       <div className="text-xxs pt-2.5">{content}</div>
-      <button onClick={likeMutate} className={cn(likeButton)}>
+      <button onClick={() => likeMutate} className={cn(likeButton)}>
         <img src="/images/icons/thumbs-up.svg" />
         <div>좋아요 {likes}</div>
       </button>
