@@ -1,4 +1,4 @@
-import { useQueries } from "@tanstack/react-query";
+import { useQueries, useMutation } from "@tanstack/react-query";
 import { Project } from "@/components";
 import { communityApi } from "@/connection";
 import { useParams } from "react-router-dom";
@@ -17,13 +17,27 @@ export default function ProjectPage() {
       },
     ],
   });
+  const { mutate: like } = useMutation({
+    mutationKey: ["postProjectLike", id],
+    mutationFn: communityApi.project.likes.post,
+  });
+  const { mutate: scrap } = useMutation({
+    mutationKey: ["postProjectScrap", id],
+    mutationFn: communityApi.project.scraps.post,
+  });
+
+  const { mutate: postComment } = useMutation({
+    mutationKey: ["postProjectComment", id],
+    mutationFn: communityApi.project.answer.post,
+  });
   return (
     <Project
       post={post}
       answers={answers}
-      createComment={() => {}}
-      like={() => {}}
+      scrap={scrap}
       coffeeChat={() => {}}
+      createComment={postComment}
+      like={like}
     />
   );
 }

@@ -1,5 +1,5 @@
 import { Community } from "@/components";
-import { useQueries } from "@tanstack/react-query";
+import { useQueries, useMutation } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { communityApi } from "@/connection";
 export default function CommunityPage() {
@@ -17,13 +17,27 @@ export default function CommunityPage() {
     ],
   });
 
+  const { mutate: postComment } = useMutation({
+    mutationKey: ["postCommunityComment", id],
+    mutationFn: communityApi.answer.post,
+  });
+
+  const { mutate: like } = useMutation({
+    mutationKey: ["postCommunityLike", id],
+    mutationFn: communityApi.likes.post,
+  });
+  const { mutate: scrap } = useMutation({
+    mutationKey: ["postCommunityScrap", id],
+    mutationFn: communityApi.scraps.post,
+  });
+
   return (
     <Community
       post={post}
       answers={answers}
-      createComment={() => {}}
-      like={() => {}}
-      coffeeChat={() => {}}
+      createComment={postComment}
+      like={like}
+      scrap={scrap}
     />
   );
 }
