@@ -19,7 +19,6 @@ export default function Communities({ posts }: { posts?: Community[] }) {
     sizes: "w-full h-39",
     styles: "bg-white-off",
   };
-  console.log(posts);
 
   return (
     <>
@@ -55,8 +54,11 @@ export default function Communities({ posts }: { posts?: Community[] }) {
             createdAt={Moment.getDateFromNow(post.createdAt)}
             likes={post.likes}
             views={post.views}
+            scraps={post.scraps}
             commentCount={post.comments}
             member={post.member}
+            likeMutate={undefined}
+            scrapMutate={undefined}
           />
         ))}
         <Button.Float

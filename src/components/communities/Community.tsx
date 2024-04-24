@@ -1,18 +1,18 @@
 import { PostCard, CommentCard } from "@/design";
-import { Answer, OnClick, Community } from "@/interface";
+import { Answer, AnswerRequest, OnClick, Community } from "@/interface";
 import { Moment, cn } from "@/util";
 export default function CommunityById({
   post,
   answers,
   createComment,
-  coffeeChat,
   like,
+  scrap,
 }: {
   post?: Community;
   answers?: Answer[];
-  createComment?: OnClick;
-  coffeeChat: OnClick;
-  like: OnClick;
+  createComment: OnClick<AnswerRequest>;
+  like: OnClick<number>;
+  scrap: OnClick<number>;
 }) {
   const container = {
     displays: "flex flex-col gap-2",
@@ -48,15 +48,18 @@ export default function CommunityById({
           content={post?.content}
           createdAt={Moment.getDateFromNow(post?.createdAt as string)}
           likes={post?.likes}
+          scraps={post?.scraps}
           views={post?.views}
           commentCount={post?.comments}
           member={post?.member}
+          likeMutate={like}
+          scrapMutate={scrap}
         />
       </div>
       <div className={cn(commentBox.container)}>
         <div className={cn(commentBox.body)}>
           <div className="text-lg font-bold">답변하기</div>
-          <CommentCard.Create mutate={createComment} />
+          <CommentCard.Create id={post?.id as number} mutate={createComment} />
         </div>
       </div>
       <div className={cn(commentBox.container)}>
@@ -64,11 +67,7 @@ export default function CommunityById({
           답변 {answers?.length ?? "0"}
         </div>
         {answers?.map((answer) => (
-          <CommentCard.Read
-            {...answer}
-            coffeeChatMutate={coffeeChat}
-            likeMutate={like}
-          />
+          <CommentCard.Read {...answer} likeMutate={like} />
         ))}
       </div>
     </div>

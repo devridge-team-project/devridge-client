@@ -7,7 +7,7 @@ import {
   Study,
   StudyRequest,
   Answer,
-  Content,
+  AnswerRequest,
 } from "@/interface";
 
 const api = httpRequest.server;
@@ -72,30 +72,60 @@ export const getCommunityComments = (id: number) => {
   return api.get<Answer[]>(`api/community/${id}/comments`);
 };
 
-export const postCommunityComments = (id: number, content: Content) => {
-  return api.post(`api/community/${id}/comments`, content);
+export const postCommunityComments = ({ id, content }: AnswerRequest) => {
+  return api.post(`api/community/${id}/comments`, { content });
 };
 
 export const getProjectComments = (id: number) => {
   return api.get<Answer[]>(`api/community/projects/${id}/comments`);
 };
 
-export const postProjectComments = (id: number, content: Content) => {
-  return api.post(`api/community/projects/${id}/comments`, content);
+export const postProjectComments = ({ id, content }: AnswerRequest) => {
+  return api.post(`api/community/projects/${id}/comments`, { content });
 };
 
 export const getStudyComments = (id: number) => {
   return api.get<Answer[]>(`api/community/studies/${id}/comments`);
 };
 
-export const postStudyComments = (id: number, content: Content) => {
-  return api.post(`api/community/studies/${id}/comments`, content);
+export const postStudyComments = ({ id, content }: AnswerRequest) => {
+  return api.post(`api/community/studies/${id}/comments`, { content });
+};
+
+export const postCommunityLikes = (id: number) => {
+  return api.post(`api/community/${id}/like`);
+};
+
+export const postCommunityScraps = (id: number) => {
+  return api.post(`api/community/${id}/scraps`);
+};
+
+export const postStudyLikes = (id: number) => {
+  return api.post(`api/community/studies/${id}/like`);
+};
+
+export const postStudyScraps = (id: number) => {
+  return api.post(`api/community/studies/${id}/scraps`);
+};
+
+export const postProjectLikes = (id: number) => {
+  return api.post(`api/community/studies/${id}/like`);
+};
+
+export const postProjectScraps = (id: number) => {
+  return api.post(`api/community/studies/${id}/scraps`);
 };
 
 const communityApi = {
   getAll: getCommunities,
   get: getCommunity,
   post: postCommunity,
+  scraps: {
+    post: postCommunityScraps,
+  },
+  likes: {
+    post: postCommunityLikes,
+  },
   answer: {
     getAll: getCommunityComments,
     post: postCommunityComments,
@@ -104,6 +134,12 @@ const communityApi = {
     getAll: getProjects,
     get: getProject,
     post: postProject,
+    scraps: {
+      post: postProjectScraps,
+    },
+    likes: {
+      post: postProjectLikes,
+    },
     answer: {
       getAll: getProjectComments,
       post: postProjectComments,
@@ -113,6 +149,12 @@ const communityApi = {
     getAll: getStudies,
     get: getStudy,
     post: postStudy,
+    scraps: {
+      post: postStudyScraps,
+    },
+    likes: {
+      post: postStudyLikes,
+    },
     answer: {
       getAll: getStudyComments,
       post: postStudyComments,
