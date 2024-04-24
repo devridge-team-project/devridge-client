@@ -1,6 +1,7 @@
 import { Member } from "./Member";
 import { OnClick } from "./Property";
 import { Skill } from "./Skill";
+import { AnswerRequest } from "./Answer";
 
 export interface PostCardProps {
   id: number | undefined;
@@ -8,12 +9,15 @@ export interface PostCardProps {
   content: string | undefined;
   commentCount: number | undefined;
   views: number | undefined;
+  scraps: number | undefined;
   likes: number | undefined;
   createdAt: string | undefined;
 }
 
 export interface PostCardCommunityProps extends PostCardProps {
   member: Member | undefined;
+  likeMutate?: OnClick<number> | undefined;
+  scrapMutate?: OnClick<number> | undefined;
 }
 
 export interface PostCardNoticeProps
@@ -48,10 +52,10 @@ export interface CommentCardProps {
 }
 
 export interface CommentCardReadProps extends CommentCardProps {
-  coffeeChatMutate: OnClick;
-  likeMutate: OnClick;
+  likeMutate: OnClick<number>;
 }
 
 export interface CommentCardCreateProps {
-  mutate?: OnClick;
+  id: number;
+  mutate: OnClick<AnswerRequest>;
 }

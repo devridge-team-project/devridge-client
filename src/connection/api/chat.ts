@@ -1,5 +1,10 @@
 import httpRequest from "../axios";
-import { ChatMessage, PrivateMessage, SendReceiveChat } from "@/interface";
+import {
+  ChatMessage,
+  ChatPost,
+  PrivateMessage,
+  SendReceiveChat,
+} from "@/interface";
 const api = httpRequest.server;
 
 const getCoffeeChatMessage = () => {
@@ -16,8 +21,7 @@ const getCoffeeChatReq = (viewOption: "send" | "receive") => {
   });
 };
 
-const postCoffeeChat = (toMemberId: number, message: string) => {
-  console.log(message);
+const postCoffeeChat = ({ toMemberId, message }: ChatPost) => {
   return api.post("api/coffee-chat/requests", { toMemberId, message });
 };
 

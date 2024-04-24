@@ -20,6 +20,11 @@ export interface PrivateMessage {
   updateAt: string;
 }
 
+export interface ChatPost {
+  toMemberId: number;
+  message: string;
+}
+
 export interface ChatRequest {
   id: number;
   member: Member;
