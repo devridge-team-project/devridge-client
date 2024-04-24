@@ -13,19 +13,13 @@ export default function ProjectPost({
   const title = useState<string>("");
   const content = useState<string>("");
   const [meeting, setMeeting] = useState<string>("");
-  const [roles, setRoles] = useState<string[]>([]);
   const [skills, setSkills] = useState<string[]>([]);
-
-  const [checkRoles, setCheckRoles] = useState([
+  const [roles, setRoles] = useState([
     { id: "frontEnd", checked: false },
     { id: "backEnd", checked: false },
     { id: "design", checked: false },
     { id: "PM", checked: false },
   ]);
-  const [checkMeeting, setCheckMeeting] = useState({
-    online: false,
-    offline: false,
-  });
 
   const searchWord = useState<string>("");
   const [searchItems, setSearchItems] = useState<Skill[]>([]);
@@ -43,8 +37,9 @@ export default function ProjectPost({
   };
 
   const onRoleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCheckRoles((prevCheckRoles) =>
-      prevCheckRoles.map((role) =>
+    console.log(roles);
+    setRoles((prevRoles) =>
+      prevRoles.map((role) =>
         role.id === e.target.id ? { ...role, checked: !role.checked } : role
       )
     );
@@ -88,7 +83,7 @@ export default function ProjectPost({
               type="radio"
               name="meeting"
               value={value}
-              checked={checkRoles.find((role) => role.id === id)?.checked}
+              checked={roles.find((role) => role.id === id)?.checked}
               onChange={onRoleChange}
               className="w-40 h-7.5 border-2 border-gray-200"
             />
@@ -137,7 +132,9 @@ export default function ProjectPost({
               title: title[0],
               content: content[0],
               meeting,
-              roles,
+              roles: roles
+                .filter((role) => role.checked)
+                .map((role) => role.id),
               skillIds: skills.map((skillName) => {
                 const matchedSkill = skillInfo?.find(
                   (skill) => skill.skillName === skillName
