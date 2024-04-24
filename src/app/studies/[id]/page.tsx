@@ -1,4 +1,4 @@
-import { useQueries } from "@tanstack/react-query";
+import { useQueries, useMutation } from "@tanstack/react-query";
 import { Study } from "@/components";
 import { communityApi } from "@/connection";
 import { useParams } from "react-router-dom";
@@ -17,13 +17,26 @@ export default function StudyPage() {
       },
     ],
   });
+  const { mutate: like } = useMutation({
+    mutationKey: ["postStudyLike", id],
+    mutationFn: communityApi.study.likes.post,
+  });
+  const { mutate: scrap } = useMutation({
+    mutationKey: ["postStudyScrap", id],
+    mutationFn: communityApi.study.scraps.post,
+  });
+  const { mutate: postComment } = useMutation({
+    mutationKey: ["postStudyComment", id],
+    mutationFn: communityApi.study.answer.post,
+  });
   return (
     <Study
       post={post}
       answers={answers}
-      createComment={() => {}}
-      like={() => {}}
       coffeeChat={() => {}}
+      createComment={postComment}
+      scrap={scrap}
+      like={like}
     />
   );
 }

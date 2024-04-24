@@ -15,6 +15,8 @@ export interface Project {
   skills: Skill[];
   meeting: string;
   isRecruiting: boolean;
+  comments: number;
+  scraps: number;
 }
 
 export interface ProjectRequest {

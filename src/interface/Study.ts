@@ -12,6 +12,8 @@ export interface Study {
   views: number;
   location: string | null;
   member: Member;
+  comments: number;
+  scraps: number;
 }
 
 export interface StudyRequest {

@@ -1,5 +1,5 @@
 import { PostCard, CommentCard } from "@/design";
-import { Answer, OnClick, Study } from "@/interface";
+import { Answer, AnswerRequest, OnClick, Study } from "@/interface";
 import { useNavigate } from "react-router-dom";
 import { Moment, cn } from "@/util";
 function StudyById({
@@ -8,12 +8,14 @@ function StudyById({
   createComment,
   coffeeChat,
   like,
+  scrap,
 }: {
   post?: Study;
   answers?: Answer[];
-  createComment?: OnClick;
+  createComment: OnClick<AnswerRequest>;
   coffeeChat: OnClick;
-  like: OnClick;
+  like: OnClick<number>;
+  scrap: OnClick<number>;
 }) {
   const container = {
     displays: "flex flex-col gap-2.5",
@@ -98,9 +100,21 @@ function StudyById({
           </div>
 
           <div className="pt-7.5 flex gap-3 text-xs">
-            <button>추천해요</button>
-            <button>저장하기</button>
-            <button>추천해요</button>
+            <div className="flex gap-1">
+              <img src={"/images/icons/thumbs-up.svg"} alt="likes" />
+              <button onClick={() => like(post?.id as number)}>추천해요</button>
+            </div>
+            <div className="flex gap-1">
+              <img src={"/images/icons/bookmark.svg"} alt="scrap" />
+              <button onClick={() => scrap(post?.id as number)}>
+                저장하기
+              </button>
+            </div>
+
+            <div className="flex gap-1">
+              <img src={"/images/icons/comments.svg"} alt="comments" />
+              <div>{post?.comments}</div>
+            </div>
           </div>
         </div>
       </div>
@@ -115,7 +129,7 @@ function StudyById({
             쪽지 보내기
           </button>
           <div className="text-lg font-bold">답변하기</div>
-          <CommentCard.Create mutate={createComment} />
+          <CommentCard.Create id={post?.id as number} mutate={createComment} />
         </div>
       </div>
       <div className={cn(commentBox.container)}>
@@ -125,7 +139,7 @@ function StudyById({
         {answers?.map((answer) => (
           <CommentCard.Read
             {...answer}
-            coffeeChatMutate={coffeeChat}
+            // coffeeChatMutate={coffeeChat}
             likeMutate={like}
           />
         ))}
