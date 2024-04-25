@@ -1,6 +1,6 @@
 import { useTransition, animated } from "react-spring";
 import { cn } from "@/util";
-import { useWidgetStore } from "@/shared/store";
+import { useSignUpStore, useWidgetStore } from "@/shared";
 import { Link } from "react-router-dom";
 import { links } from "./links";
 import { Button } from "../html";
@@ -13,6 +13,9 @@ interface OverlayProps {
 export default function Overlay({ isVisible }: OverlayProps) {
   const navigation = useNavigation();
   const { clearView } = useWidgetStore();
+  const {
+    signUpData: { isSignedIn },
+  } = useSignUpStore();
   const container = {
     positions: "fixed top-0 right-0 z-50",
     sizes: "h-full",
@@ -38,33 +41,47 @@ export default function Overlay({ isVisible }: OverlayProps) {
         <animated.div style={styles} className={cn(container)}>
           <div className={cn(body)}>
             <div className="text-xl font-bold ">카테고리</div>
-            {links.map(({ name, href, icon }) => (
-              <Link
-                key={href}
-                to={href}
-                onClick={clearView}
-                className="flex items-center gap-3.75"
-              >
-                <img src={`/images/icons/${icon}.svg`} />
-                <div>{name}</div>
-              </Link>
-            ))}
+            {links
+              .filter(({ isSignIn }) => !isSignIn || (isSignIn && isSignedIn))
+              .map(({ name, href, icon }) => (
+                <Link
+                  key={href}
+                  to={href}
+                  onClick={clearView}
+                  className="flex items-center gap-3.75"
+                >
+                  <img src={`/images/icons/${icon}.svg`} />
+                  <div>{name}</div>
+                </Link>
+              ))}
             <div className="flex flex-col mt-21 gap-2.5">
-              <Button
-                onClick={() => navigation("/sign-in", clearView)}
-                options={{
-                  size: "full",
-                }}
-                title="로그인"
-              />
-              <Button
-                onClick={() => navigation("/sign-up", clearView)}
-                options={{
-                  color: "white",
-                  size: "full",
-                }}
-                title="회원가입"
-              />
+              {isSignedIn ? (
+                <Button
+                  onClick={() => navigation("/sign-out", clearView)}
+                  options={{
+                    size: "full",
+                  }}
+                  title="로그아웃"
+                />
+              ) : (
+                <>
+                  <Button
+                    onClick={() => navigation("/sign-in", clearView)}
+                    options={{
+                      size: "full",
+                    }}
+                    title="로그인"
+                  />
+                  <Button
+                    onClick={() => navigation("/sign-up", clearView)}
+                    options={{
+                      color: "white",
+                      size: "full",
+                    }}
+                    title="회원가입"
+                  />
+                </>
+              )}
             </div>
             <img
               src="/images/icons/devridge.svg"

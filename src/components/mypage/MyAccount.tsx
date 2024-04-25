@@ -1,14 +1,10 @@
 import { Link } from "react-router-dom";
-import { User, OnClick } from "@/interface";
+import { User } from "@/interface";
 import { Button } from "@/design";
+import { useNavigation } from "@/hook";
 
-export default function MyAccount({
-  logout,
-  user,
-}: {
-  logout: OnClick<void>;
-  user?: User;
-}) {
+export default function MyAccount({ user }: { user?: User }) {
+  const navigation = useNavigation();
   return (
     <div className="mx-8.75">
       <div>
@@ -43,7 +39,7 @@ export default function MyAccount({
         <div className="mt-5">
           <Button
             title="로그아웃"
-            onClick={() => logout}
+            onClick={() => navigation("/sign-out")}
             options={{ size: "full" }}
           />
         </div>

@@ -11,6 +11,7 @@ import { SignIn } from "./sign-in";
 import { SignUp, Join } from "./sign-up";
 import { Notices, Notice } from "./notices";
 import { Chat, PrivateChatPage, SendReceiveMessagesPage } from "./chat";
+import { SignOut } from "./sign-out";
 
 export default function App() {
   return (
@@ -24,6 +25,9 @@ export default function App() {
           <Route path="sign-up">
             <Route index element={<SignUp />} />
             <Route path="join" element={<Join />} />
+          </Route>
+          <Route path="sign-out">
+            <Route index element={<SignOut />} />
           </Route>
           <Route path="mypage">
             <Route index element={<MyPage />} />
