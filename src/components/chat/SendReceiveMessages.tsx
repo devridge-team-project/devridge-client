@@ -13,26 +13,29 @@ export default function SendReceiveMessages({
   posts?: SendReceiveChat;
 }) {
   const header = {
-    positions: "fixed top-35 left-0",
-    sizes: "w-full h-37",
+    // positions: "fixed top-35 left-0",
+    sizes: "w-full",
     styles: "bg-white",
   };
+
   return (
-    <div className={cn(header)}>
-      <div className="pr-9 flex justify-end tems-center gap-5 w-full h-13 border-b ">
-        <Link to="/chat">매세지</Link>
-        <Link
-          to="/chat/receive"
-          className={pathname === "/chat/receive" ? "font-bold" : ""}
-        >
-          받은 요청
-        </Link>
-        <Link
-          to="/chat/send"
-          className={pathname === "/chat/send" ? "font-bold" : ""}
-        >
-          보낸 요청
-        </Link>
+    <div>
+      <div className={cn(header)}>
+        <div className="pr-9 flex justify-end tems-center gap-5 w-full h-13 border-b ">
+          <Link to="/chat">매세지</Link>
+          <Link
+            to="/chat/receive"
+            className={pathname === "/chat/receive" ? "font-bold" : ""}
+          >
+            받은 요청
+          </Link>
+          <Link
+            to="/chat/send"
+            className={pathname === "/chat/send" ? "font-bold" : ""}
+          >
+            보낸 요청
+          </Link>
+        </div>
       </div>
       <div>
         {posts?.coffeeChatRequests?.map(
@@ -55,27 +58,40 @@ export default function SendReceiveMessages({
                     <div className="text-1xl">{introduction}</div>
                   </div>
                 </div>
-                <div>{message}</div>
                 <div className="mt-6.25 mb-3.75 mx-7.5 flex justify-end">
-                  {pathname === "/coffeechat/res" ? (
-                    <>
+                  {pathname === "/chat/receive" ? (
+                    <div className="flex gap-1">
                       <button
                         type="button"
-                        className="w-17.5 h-7.5 rounded bg-blue-grey text-white"
+                        className="w-17.5 h-7.5 rounded bg-bright-purple text-white"
                         onClick={() => mutate({ id, answer: "Y" })}
                       >
                         수락
                       </button>
                       <button
                         type="button"
-                        className="w-17.5 h-7.5 rounded border-[1px] border-solid border-white-grey"
+                        className="w-17.5 h-7.5 rounded border-[1px] border-solid border-white-gray"
                         onClick={() => mutate({ id, answer: "N" })}
                       >
                         거절
                       </button>
-                    </>
+                    </div>
                   ) : (
-                    <div>승인 {status}</div>
+                    <div className="flex gap-1">
+                      <button
+                        type="button"
+                        className="px-8 h-7.5 rounded border-[1px] border-solid border-white-gray"
+                      >
+                        {status}
+                      </button>
+                      <button
+                        type="button"
+                        className="w-17.5 h-7.5 rounded bg-bright-purple text-white"
+                        onClick={() => {}}
+                      >
+                        취소
+                      </button>
+                    </div>
                   )}
                 </div>
               </div>
