@@ -1,4 +1,6 @@
 import moment from "moment";
+import "moment/locale/ko";
+moment.locale("ko");
 
 export const getDate = (date: string) => {
   return moment(date).format("YYYY-MM-DD");
