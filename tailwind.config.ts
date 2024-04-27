@@ -157,6 +157,11 @@ export default {
         "image-bubble": "url('/images/home/bubble.png')",
         "image-developer-man": "url('/images/home/developer-man.png')",
       },
+      flexGrow: {
+        0.25: "0.25",
+        0.33: "0.33",
+        0.5: "0.5",
+      },
     },
   },
 } satisfies Config;
