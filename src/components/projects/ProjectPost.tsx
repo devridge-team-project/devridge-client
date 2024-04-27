@@ -31,6 +31,14 @@ export default function ProjectPost({
     setSkills([...set]);
   };
 
+  const onRemoveSkillHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const set = new Set(skills);
+    const target = e.target as HTMLButtonElement;
+    console.log(target);
+    set.delete(target.dataset.skill as string);
+    setSkills([...set]);
+  };
+
   const onMeetingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setMeeting(value);
@@ -106,6 +114,18 @@ export default function ProjectPost({
             ))}
           </div>
         )}
+      </div>
+      <div className="flex mt-3.5 flex-wrap gap-2 overflow-hidden">
+        {skills.map((skill) => (
+          <button
+            key={skill}
+            onClick={onRemoveSkillHandler}
+            data-skill={skill}
+            className="bg-blue-500 border-blue-500 text-white font-bold flex h-10 grow-0.25 items-center justify-center rounded-full border-2 p-4 duration-500"
+          >
+            {`${skill} x`}
+          </button>
+        ))}
       </div>
       <div className="mt-7.5">
         <Tag title="참여방식" />
