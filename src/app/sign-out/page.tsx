@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import { useNavigation } from "@/hook";
-import { useSignUpStore } from "@/shared";
+import { useSignStore, useSignUpStore } from "@/shared";
 import { signApi } from "@/connection";
 import { useMutation } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 
 const SignOut = () => {
   const navigate = useNavigation();
+  const { signOut } = useSignStore();
   const { setSignUpData } = useSignUpStore();
   const { mutate } = useMutation({
     mutationKey: ["logout"],
@@ -20,8 +21,8 @@ const SignOut = () => {
       introduction: "",
       imageUrl: null,
       skillIds: [],
-      isSignedIn: false,
     });
+    signOut();
     mutate();
     Swal.fire({
       title: "로그아웃 되었습니다.",

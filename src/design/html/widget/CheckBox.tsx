@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { cn } from "@/util";
 import { CheckBoxProps } from "@/interface";
-import { useSignUpStore } from "@/shared/sign-up/store";
+import { useSignUpStore } from "@/shared";
 
 export default function CheckBox({ title, script, flag }: CheckBoxProps) {
   const [isOpen, setIsOpen] = useState(false);

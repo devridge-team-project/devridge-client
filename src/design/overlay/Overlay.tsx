@@ -1,6 +1,6 @@
 import { useTransition, animated } from "react-spring";
 import { cn } from "@/util";
-import { useSignUpStore, useWidgetStore } from "@/shared";
+import { useSignStore, useWidgetStore } from "@/shared";
 import { Link } from "react-router-dom";
 import { links } from "./links";
 import { Button } from "../html";
@@ -13,9 +13,7 @@ interface OverlayProps {
 export default function Overlay({ isVisible }: OverlayProps) {
   const navigation = useNavigation();
   const { clearView } = useWidgetStore();
-  const {
-    signUpData: { isSignedIn },
-  } = useSignUpStore();
+  const { isSignIn } = useSignStore();
   const container = {
     positions: "fixed top-0 right-0 z-50",
     sizes: "h-full",
@@ -42,7 +40,7 @@ export default function Overlay({ isVisible }: OverlayProps) {
           <div className={cn(body)}>
             <div className="text-xl font-bold ">카테고리</div>
             {links
-              .filter(({ isSignIn }) => !isSignIn || (isSignIn && isSignedIn))
+              .filter(({ isSignIn }) => !isSignIn || (isSignIn && isSignIn))
               .map(({ name, href, icon }) => (
                 <Link
                   key={href}
@@ -55,7 +53,7 @@ export default function Overlay({ isVisible }: OverlayProps) {
                 </Link>
               ))}
             <div className="flex flex-col mt-21 gap-2.5">
-              {isSignedIn ? (
+              {isSignIn ? (
                 <Button
                   onClick={() => navigation("/sign-out", clearView)}
                   options={{

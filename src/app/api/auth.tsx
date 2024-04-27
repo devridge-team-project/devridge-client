@@ -1,7 +1,7 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { signApi } from "@/connection";
-import { useSignUpStore } from "@/shared/sign-up/store";
+import { useSignUpStore } from "@/shared";
 import { useEffect } from "react";
 
 function Auth({ provider }: { provider: string }) {
