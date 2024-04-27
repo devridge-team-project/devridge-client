@@ -26,7 +26,7 @@
     "noFallthroughCasesInSwitch": true,
 
     /* Build */
-    "outDir": "./build"
+    "outDir": "./dist"
   },
   "include": [
     "src",
