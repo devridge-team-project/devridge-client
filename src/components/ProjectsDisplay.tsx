@@ -51,7 +51,7 @@ interface Teammate {
   skills: [string, string][];
 }
 
-function TeammateBox({ occupation, image, skills }: Teammate) {
+function TeammateBox({ occupation, skills }: Teammate) {
   const container = {
     displays: "flex flex-col items-center",
     sizes: "w-32.5 h-55",
