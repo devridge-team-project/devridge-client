@@ -20,3 +20,33 @@
   opacity: 0.5;
   border-radius: 10px;
 }
+
+@keyframes slideLeftRight {
+  0%,
+  100% {
+    transform: translateX(0%);
+  }
+  50% {
+    transform: translateX(10%);
+  }
+}
+
+.infinite-slider-left-right {
+  display: flex;
+  animation: slideLeftRight 40s ease-in-out infinite;
+}
+
+@keyframes slideRightLeft {
+  0%,
+  100% {
+    transform: translateX(0%);
+  }
+  50% {
+    transform: translateX(-10%);
+  }
+}
+
+.infinite-slider-right-left {
+  display: flex;
+  animation: slideRightLeft 40s ease-in-out infinite;
+}

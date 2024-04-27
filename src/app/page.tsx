@@ -1,16 +1,26 @@
-import { Banner } from "@/components";
-import Qnas from "@/components/Qnas";
+import {
+  Banner,
+  GettingStartDisplay,
+  ProjectsDisplay,
+  QnasDisplay,
+} from "@/components";
 import { Footer } from "@/design";
 import { cn } from "@/util";
 
 export default function RootPage() {
   const container = {
-    displays: "flex flex-col",
+    positions: "relative",
+    displays: "flex flex-col justify-between",
+    sizes: "w-full min-h-screen overflow-x-hidden",
   };
   return (
     <div className={cn(container)}>
-      <Banner />
-      <Qnas />
+      <div className="flex flex-col">
+        <Banner />
+        <QnasDisplay />
+        <ProjectsDisplay />
+        <GettingStartDisplay />
+      </div>
       <Footer />
     </div>
   );

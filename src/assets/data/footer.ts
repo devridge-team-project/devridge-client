@@ -1,16 +1,16 @@
 const footers = [
   {
-    link: "https://github.com/",
+    link: "https://github.com/devridge-team-project",
     src: "/images/icons/github.svg",
     alt: "github",
   },
   {
-    link: "https://www.instagram.com/",
+    link: "#",
     src: "/images/icons/instagram.png",
     alt: "instagram",
   },
   {
-    link: "https://kr.linkedin.com/",
+    link: "#",
     src: "/images/icons/linkedIn.png",
     alt: "linkedIn",
   },
