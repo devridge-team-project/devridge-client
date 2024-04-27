@@ -1,12 +1,12 @@
 const {
-  REACT_APP_AUTH_NAVER_ORIGIN: naver,
-  REACT_APP_AUTH_KAKAO_ORIGIN: kakao,
-  REACT_APP_AUTH_GITHUB_ORIGIN: gitHub,
-  REACT_APP_AUTH_GOOGLE_ORIGIN: google,
-  REACT_APP_AUTH_KAKAO_CLIENT_ID: kakaoClientId,
-  REACT_APP_AUTH_GOOGLE_CLIENT_ID: googleClientId,
-  REACT_APP_AUTH_GITHUB_CLIENT_ID: gitHubClientId,
-  REACT_APP_AUTH_NAVER_CLIENT_ID: naverClientId,
+  VITE_AUTH_NAVER_ORIGIN: naver,
+  VITE_AUTH_KAKAO_ORIGIN: kakao,
+  VITE_AUTH_GITHUB_ORIGIN: gitHub,
+  VITE_AUTH_GOOGLE_ORIGIN: google,
+  VITE_AUTH_KAKAO_CLIENT_ID: kakaoClientId,
+  VITE_AUTH_GOOGLE_CLIENT_ID: googleClientId,
+  VITE_AUTH_GITHUB_CLIENT_ID: gitHubClientId,
+  VITE_AUTH_NAVER_CLIENT_ID: naverClientId,
 } = process.env;
 
 const redirectUri = "http://localhost:3000/login/oauth2/code";
