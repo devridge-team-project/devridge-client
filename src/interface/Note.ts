@@ -3,7 +3,6 @@ export interface Note {
   id: number;
   content: string;
   senderId: number;
-  scraps: number;
   userInformation: Member;
   createdAt: string;
 }

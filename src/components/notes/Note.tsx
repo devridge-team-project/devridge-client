@@ -7,7 +7,7 @@ export default function NoteById({
 }: {
   nickname: string;
   receiverId: number;
-  posts?: Omit<Note, "userInformation">[];
+  posts?: Note[];
 }) {
   const header = {
     positions: "fixed top-35 left-0",
@@ -43,7 +43,7 @@ export default function NoteById({
       fonts: "text-xxs",
     },
   };
-  console.log(posts);
+
   return (
     <div className={cn(header)}>
       <div className="pl-9 flex items-center w-full h-13 font-bold text-xl border-b ">

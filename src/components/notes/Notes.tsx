@@ -1,11 +1,7 @@
 import { Note } from "@/interface";
 import { PostCard } from "@/design";
 import { cn } from "@/util";
-export default function NoteList({
-  posts,
-}: {
-  posts?: Omit<Note, "senderId">[];
-}) {
+export default function NoteList({ posts }: { posts?: Note[] }) {
   const header = {
     positions: "fixed top-35 left-0",
     sizes: "w-full h-37",

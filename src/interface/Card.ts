@@ -25,7 +25,6 @@ export interface PostCardNoticeProps
 
 export interface PostCardNoteProps
   extends Omit<PostCardProps, "commentCount" | "views" | "likes" | "title"> {
-  scraps: number;
   userInformation: Member | undefined;
 }
 
