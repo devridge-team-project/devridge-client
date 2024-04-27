@@ -14,11 +14,11 @@ export default function UpdateAccount({
   const introduction = useState<string>("");
   const searchWord = useState<string>("");
 
-  const [skill, setSkill] = useState<string[]>([]);
+  const [skills, setSkills] = useState<string[]>([]);
   const [searchItems, setSearchItems] = useState<Skill[]>([]);
 
   const data = {
-    skillIds: skill.map((skillName) => {
+    skillIds: skills.map((skillName) => {
       const matchedSkill = skillInfo?.find(
         (skill) => skill.skillName === skillName
       );
@@ -33,19 +33,19 @@ export default function UpdateAccount({
   formData.append("info", blob);
 
   const onAddSkillHandler = (e: React.MouseEvent<HTMLDivElement>) => {
-    const set = new Set(skill);
+    const set = new Set(skills);
     const target = e.target as HTMLDivElement;
     console.log(target.dataset.skillName);
     set.add(target.dataset.skillName as string);
-    setSkill([...set]);
+    setSkills([...set]);
   };
 
   const onRemoveSkillHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const set = new Set(skill);
+    const set = new Set(skills);
     const target = e.target as HTMLButtonElement;
     console.log(target);
     set.delete(target.dataset.skill as string);
-    setSkill([...set]);
+    setSkills([...set]);
   };
 
   useEffect(() => {
@@ -60,7 +60,7 @@ export default function UpdateAccount({
 
   useEffect(() => {
     if (skillInfo && user.skillIds) {
-      setSkill([
+      setSkills([
         ...user.skillIds.map((skillId: number) => {
           return skillInfo[skillId - 1].skillName;
         }),
@@ -114,12 +114,12 @@ export default function UpdateAccount({
         )}
       </div>
       <div className="flex mt-3.5 flex-wrap gap-2 overflow-hidden">
-        {skill.map((skill) => (
+        {skills.map((skill) => (
           <button
             key={skill}
             onClick={onRemoveSkillHandler}
             data-skill={skill}
-            className="bg-blue-500 border-blue-500 text-white font-bold flex h-10 grow items-center justify-center rounded-full border-2 px-4 duration-500"
+            className="bg-blue-500 border-blue-500 text-white font-bold flex h-10 grow-0.25 items-center justify-center rounded-full border-2 px-4 duration-500"
           >
             {`${skill} x`}
           </button>
