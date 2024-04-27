@@ -11,6 +11,6 @@ export interface Answer {
 }
 
 export interface AnswerRequest {
-  id: number;
+  id?: number;
   content: string;
 }

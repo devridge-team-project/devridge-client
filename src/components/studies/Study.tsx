@@ -6,7 +6,6 @@ function StudyById({
   post,
   answers,
   createComment,
-  coffeeChat,
   like,
   scrap,
 }: {

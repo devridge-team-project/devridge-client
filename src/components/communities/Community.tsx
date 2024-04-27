@@ -37,21 +37,21 @@ export default function CommunityById({
       fonts: "text-white text-sm font-bold",
     },
   };
-
+  if (!post) return <></>;
   return (
     <div>
       <div className={cn(container)}>
         <PostCard.Community
-          key={post?.id}
-          id={post?.id}
-          title={post?.title}
-          content={post?.content}
+          key={post.id}
+          id={post.id}
+          title={post.title}
+          content={post.content}
           createdAt={Moment.getDateFromNow(post?.createdAt as string)}
-          likes={post?.likes}
-          scraps={post?.scraps}
-          views={post?.views}
-          commentCount={post?.comments}
-          member={post?.member}
+          likes={post.likes}
+          scraps={post.scraps}
+          views={post.views}
+          commentCount={post.comments}
+          member={post.member}
           likeMutate={like}
           scrapMutate={scrap}
         />

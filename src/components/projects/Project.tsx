@@ -7,7 +7,6 @@ export default function ProjectById({
   post,
   answers,
   createComment,
-  coffeeChat,
   like,
   scrap,
 }: {

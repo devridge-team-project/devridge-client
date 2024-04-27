@@ -1,7 +1,7 @@
-import { Community } from "@/components";
 import { useQueries, useMutation } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { communityApi } from "@/connection";
+import { Community } from "@/components";
 export default function CommunityPage() {
   const { id } = useParams();
   const [{ data: post }, { data: answers }] = useQueries({

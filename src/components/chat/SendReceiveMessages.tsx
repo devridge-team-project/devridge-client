@@ -42,7 +42,6 @@ export default function SendReceiveMessages({
           ({
             id,
             member: { nickname, profileImageUrl, introduction },
-            message,
             status,
           }) => {
             return (

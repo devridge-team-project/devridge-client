@@ -4,20 +4,20 @@ import { Skill } from "./Skill";
 import { AnswerRequest } from "./Answer";
 
 export interface PostCardProps {
-  id: number | undefined;
-  title: string | undefined;
-  content: string | undefined;
-  commentCount: number | undefined;
-  views: number | undefined;
-  scraps: number | undefined;
-  likes: number | undefined;
-  createdAt: string | undefined;
+  id: number;
+  title: string;
+  content: string;
+  commentCount: number;
+  views: number;
+  likes: number;
+  createdAt: string;
 }
 
 export interface PostCardCommunityProps extends PostCardProps {
-  member: Member | undefined;
-  likeMutate?: OnClick<number> | undefined;
-  scrapMutate?: OnClick<number> | undefined;
+  member: Member;
+  scraps: number;
+  likeMutate?: OnClick<number>;
+  scrapMutate?: OnClick<number>;
 }
 
 export interface PostCardNoticeProps
@@ -25,6 +25,7 @@ export interface PostCardNoticeProps
 
 export interface PostCardNoteProps
   extends Omit<PostCardProps, "commentCount" | "views" | "likes" | "title"> {
+  scraps: number;
   userInformation: Member | undefined;
 }
 
@@ -53,9 +54,10 @@ export interface CommentCardProps {
 
 export interface CommentCardReadProps extends CommentCardProps {
   likeMutate: OnClick<number>;
+  coffeeChatMutate?: OnClick;
 }
 
 export interface CommentCardCreateProps {
-  id: number;
+  id?: number;
   mutate: OnClick<AnswerRequest>;
 }
