@@ -27,7 +27,16 @@ export default function SendReceiveMessagesPage() {
       chatApi.requests.patch(variables.id, variables.answer),
   });
 
+  const { mutate: deleteCoffeeChat } = useMutation({
+    mutationFn: chatApi.delete,
+  });
+
   return (
-    <SendReceiveMessages mutate={mutate} pathname={pathname} posts={posts} />
+    <SendReceiveMessages
+      mutate={mutate}
+      deleteCoffeeChat={deleteCoffeeChat}
+      pathname={pathname}
+      posts={posts}
+    />
   );
 }

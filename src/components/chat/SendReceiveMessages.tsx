@@ -1,14 +1,16 @@
 import React from "react";
-import { cn } from "@/util";
+import { cn, Moment } from "@/util";
 import { Link } from "react-router-dom";
 import { SendReceiveChat, ChatResponse, OnClick } from "@/interface";
 
 export default function SendReceiveMessages({
   mutate,
+  deleteCoffeeChat,
   pathname,
   posts,
 }: {
   mutate: OnClick<ChatResponse>;
+  deleteCoffeeChat: OnClick<number>;
   pathname: string;
   posts?: SendReceiveChat;
 }) {
@@ -21,7 +23,7 @@ export default function SendReceiveMessages({
   return (
     <div>
       <div className={cn(header)}>
-        <div className="pr-9 flex justify-end tems-center gap-5 w-full h-13 border-b ">
+        <div className="pr-9 flex justify-end  gap-5 w-full h-13 border-b ">
           <Link to="/chat">매세지</Link>
           <Link
             to="/chat/receive"
@@ -41,23 +43,27 @@ export default function SendReceiveMessages({
         {posts?.coffeeChatRequests?.map(
           ({
             id,
+            createdAt,
             member: { nickname, profileImageUrl, introduction },
             status,
           }) => {
             return (
-              <div key={id}>
-                <div className="flex py-3.75 border-t border-gray-200">
-                  <img
-                    src={profileImageUrl as string}
-                    className="h-12.5 w-12.5 rounded-full bg-gray-200 "
-                    alt="profileImage"
-                  />
-                  <div className="ml-3.5">
-                    <div className="text-1xl font-bold">{nickname}</div>
-                    <div className="text-1xl">{introduction}</div>
+              <div key={id} className="mx-7">
+                <div className="flex justify-between py-3.75  border-t border-gray-200">
+                  <div className="flex">
+                    <img
+                      src={profileImageUrl as string}
+                      className="h-12.5 w-12.5 rounded-full bg-gray-200 "
+                      alt="profileImage"
+                    />
+                    <div className="ml-3.5">
+                      <div className="text-1xl font-bold">{nickname}</div>
+                      <div className="text-1xl">{introduction}</div>
+                    </div>
                   </div>
+                  <div>{Moment.getDateFromNow(createdAt)}</div>
                 </div>
-                <div className="mt-6.25 mb-3.75 mx-7.5 flex justify-end">
+                <div className="mt-6.25 mb-3.75 flex justify-end">
                   {pathname === "/chat/receive" ? (
                     <div className="flex gap-1">
                       <button
@@ -86,7 +92,7 @@ export default function SendReceiveMessages({
                       <button
                         type="button"
                         className="w-17.5 h-7.5 rounded bg-bright-purple text-white"
-                        onClick={() => {}}
+                        onClick={() => deleteCoffeeChat(id)}
                       >
                         취소
                       </button>

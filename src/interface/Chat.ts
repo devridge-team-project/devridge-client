@@ -25,10 +25,7 @@ export interface ChatPost {
   message: string;
 }
 
-export interface ChatRequest {
-  id: number;
-  member: Member;
-  message: string;
+export interface ChatRequest extends PrivateMessage {
   status: string;
 }
 

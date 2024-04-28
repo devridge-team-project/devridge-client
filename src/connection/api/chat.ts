@@ -25,6 +25,10 @@ const postCoffeeChat = ({ toMemberId, message }: ChatPost) => {
   return api.post("api/coffee-chat/requests", { toMemberId, message });
 };
 
+const deleteCoffeeChat = (id: number) => {
+  return api.delete(`api/coffee-chat/requests/${id}`);
+};
+
 const patchCoffeeChatReq = (id: number, answer: string) => {
   return api.patch(`api/coffee-chat/requests/${id}`, { answer });
 };
@@ -33,6 +37,7 @@ const chatApi = {
   getAll: getCoffeeChatMessage,
   get: getCoffeeChatMessageById,
   post: postCoffeeChat,
+  delete: deleteCoffeeChat,
   requests: {
     get: getCoffeeChatReq,
     patch: patchCoffeeChatReq,
