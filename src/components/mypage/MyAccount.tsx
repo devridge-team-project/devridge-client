@@ -18,7 +18,7 @@ export default function MyAccount({ user }: { user?: User }) {
             <div className="text-1xl font-bold text-bright-purple">
               {user?.nickname}
             </div>
-            <div className="text-1xl">{user?.occupation}</div>
+            <div className="text-1xl">{user?.introduction}</div>
           </div>
         </div>
 

@@ -9,31 +9,35 @@ export default function UserInformation() {
   const nickname = useState<string>("");
   const introduction = useState<string>("");
   const occupation = useState<number>(2);
-  const { authToken, signUpData } = useSignUpStore();
+  const {
+    authToken,
+    signUpData: { email, password, skillIds },
+  } = useSignUpStore();
   const { setModal } = useWidgetStore();
   const navigate = useNavigation();
 
   const data = {
-    email: "test135125137@test.com",
-    password: "asdf1234",
+    email,
+    password,
     provider: "normal",
-    nickname: "test123125",
-    introduction: "안녕하세요개발자입니다",
-    skillIds: [1, 2, 3],
-    occupationId: 2,
+    nickname: nickname[0],
+    introduction: introduction[0],
+    skillIds,
+    occupationId: occupation[0],
   };
 
   const authData = {
     nickname: nickname[0],
     introduction: introduction[0],
-    skillIds: [1, 2, 3],
-    occupationId: 2,
+    skillIds,
+    occupationId: occupation[0],
     tempJwt: authToken,
   };
 
   const formData = new FormData();
   const blob = new Blob([JSON.stringify(data)], { type: "application/json" });
-
+  const file = new File([""], "/images/test/default.png");
+  formData.append("image", file);
   formData.append("member", blob);
 
   const { mutate, error, isError, isSuccess } = useMutation({
