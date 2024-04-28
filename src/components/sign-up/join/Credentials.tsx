@@ -8,18 +8,18 @@ import { Loading } from "@/design";
 export default function Credentials() {
   const { setSignUpData } = useSignUpStore();
   const { setView, removeView, setModal } = useWidgetStore();
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [passwordConfirm, setPasswordConfirm] = useState<string>("");
+  const email = useState<string>("");
+  const password = useState<string>("");
+  const passwordConfirm = useState<string>("");
 
   const { mutate, isPending, isError, isSuccess } = useMutation({
     mutationKey: ["credentials"],
-    mutationFn: () => emailVerificationApi.post(email),
+    mutationFn: () => emailVerificationApi.post(email[0]),
   });
 
   useEffect(() => {
-    setSignUpData({ email, password });
-  }, [email]);
+    setSignUpData({ email: email[0], password: password[0] });
+  }, [email[0], password[0]]);
   useEffect(() => {
     if (isError) return setModal("failed");
     if (isSuccess) {
@@ -28,7 +28,8 @@ export default function Credentials() {
     }
   }, [isSuccess, isError]);
 
-  const necessary = email !== "" && password !== "" && passwordConfirm !== "";
+  const necessary =
+    email[0] !== "" && password[0] !== "" && passwordConfirm[0] !== "";
 
   const handleButtonClick = () => {
     if (necessary) return mutate();
@@ -46,9 +47,9 @@ export default function Credentials() {
       }}
       titles={{ title: "회원가입" }}
       inputs={[
-        { title: "이메일", state: [email, setEmail] },
-        { title: "비밀번호", state: [password, setPassword] },
-        { title: null, state: [passwordConfirm, setPasswordConfirm] },
+        { title: "이메일", state: email },
+        { title: "비밀번호", state: password },
+        { title: null, state: passwordConfirm },
       ]}
       buttons={[["확인", handleButtonClick]]}
     />
