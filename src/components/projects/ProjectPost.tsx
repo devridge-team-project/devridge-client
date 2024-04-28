@@ -29,6 +29,7 @@ export default function ProjectPost({
     const target = e.target as HTMLDivElement;
     set.add(target.dataset.skillName as string);
     setSkills([...set]);
+    searchWord[1]("");
   };
 
   const onRemoveSkillHandler = (e: React.MouseEvent<HTMLButtonElement>) => {

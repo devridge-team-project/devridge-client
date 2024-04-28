@@ -11,8 +11,9 @@ export default function UpdateAccount({
   skillInfo?: Skill[];
   user: User;
 }) {
-  const introduction = useState<string>("");
+  const introduction = useState<string>(user.introduction);
   const searchWord = useState<string>("");
+  const imageUrl = useState<string>(user.imageUrl as string);
 
   const [skills, setSkills] = useState<string[]>([]);
   const [searchItems, setSearchItems] = useState<Skill[]>([]);
@@ -24,7 +25,7 @@ export default function UpdateAccount({
       );
       return matchedSkill?.id;
     }),
-    introduction: introduction,
+    introduction: introduction[0],
   };
   const formData = new FormData();
   const blob = new Blob([JSON.stringify(data)], { type: "application/json" });
@@ -38,6 +39,7 @@ export default function UpdateAccount({
     console.log(target.dataset.skillName);
     set.add(target.dataset.skillName as string);
     setSkills([...set]);
+    searchWord[1]("");
   };
 
   const onRemoveSkillHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -67,7 +69,6 @@ export default function UpdateAccount({
       ]);
     }
   }, [skillInfo]);
-  console.log(user);
 
   return (
     <div className="mx-8.75">
@@ -80,6 +81,7 @@ export default function UpdateAccount({
           className="h-25 w-25 rounded-full bg-gray-200 "
           alt="profileImage"
         />
+
         <div className="text-2xl mt-5 text-bright-purple font-bold">
           {user?.nickname}
         </div>
