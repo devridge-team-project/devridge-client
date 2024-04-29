@@ -8,6 +8,7 @@ export * from "./studies";
 export * from "./chat";
 export * from "./notes";
 export * from "./mypage";
+export * from "./findPassWord";
 export { default as Banner } from "./Banner";
 
 export { default as QnasDisplay } from "./QnasDisplay";
