@@ -30,10 +30,10 @@ export default function SignUpDesign({
         {checkboxes?.map(({ flag, title, scripts }) => (
           <CheckBox key={id} title={title} script={scripts} flag={flag} />
         ))}
-        {inputs?.map(({ title, state, placeholder }) => (
+        {inputs?.map(({ type, title, state, placeholder }) => (
           <div className="flex w-full flex-col gap-2">
             {title && <div>{title}</div>}
-            <Input state={state} placeholder={placeholder} />
+            <Input state={state} placeholder={placeholder} type={type} />
           </div>
         ))}
         {selects?.map(({ title, state, selectOptions, placeholder }) => (

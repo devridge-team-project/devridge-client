@@ -48,8 +48,8 @@ export default function Credentials() {
       titles={{ title: "회원가입" }}
       inputs={[
         { title: "이메일", state: email },
-        { title: "비밀번호", state: password },
-        { title: null, state: passwordConfirm },
+        { title: "비밀번호", state: password, type: "password" },
+        { title: null, state: passwordConfirm, type: "password" },
       ]}
       buttons={[["확인", handleButtonClick]]}
     />

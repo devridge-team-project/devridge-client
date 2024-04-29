@@ -37,7 +37,7 @@ export default function SignIn({ signIn }: { signIn: OnClick<SignInRequest> }) {
           options={{ size: "full" }}
         />
         <div className="flex w-full justify-end">
-          <button>비밀번호 찾기</button>
+          <button onClick={() => navigation("/find-pw")}>비밀번호 찾기</button>
         </div>
         <div className={cn(bottomBox)}>
           <div>다른 계정으로 로그인하기</div>
