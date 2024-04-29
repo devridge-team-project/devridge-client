@@ -91,7 +91,7 @@ const http = (
         .then((res) => res.data);
     },
     delete: <Response = unknown>(url: string, data?: object) => {
-      return axiosJson.delete<Response>(url, data).then((res) => res.data);
+      return axiosJson.delete<Response>(url, { ...data, ...axiosRequestConfig }).then((res) => res.data);
     },
   };
 };
