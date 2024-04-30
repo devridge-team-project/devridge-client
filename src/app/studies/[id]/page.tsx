@@ -1,18 +1,31 @@
-import { useQueries, useMutation } from "@tanstack/react-query";
+import {
+  useQueries,
+  useMutation,
+  useQueryClient,
+  QueryFilters,
+} from "@tanstack/react-query";
 import { Study } from "@/components";
 import { communityApi } from "@/connection";
 import { useParams } from "react-router-dom";
+import { useSignInStore } from "@/shared";
+import { Answer } from "@/interface";
 
 export default function StudyPage() {
   const { id } = useParams();
+  const queryClient = useQueryClient();
+  const studyKey = ["getStudy", id];
+  const studyAnswerKey = ["getStudyAnswers", id];
+  const {
+    signInData: { userId, nickname, introduction, imageUrl },
+  } = useSignInStore();
   const [{ data: post }, { data: answers }] = useQueries({
     queries: [
       {
-        queryKey: ["getStudy", id],
+        queryKey: studyKey,
         queryFn: () => communityApi.study.get(Number(id)),
       },
       {
-        queryKey: ["getStudyAnswers", id],
+        queryKey: studyAnswerKey,
         queryFn: () => communityApi.study.answer.getAll(Number(id)),
       },
     ],
@@ -28,6 +41,30 @@ export default function StudyPage() {
   const { mutate: postComment } = useMutation({
     mutationKey: ["postStudyComment", id],
     mutationFn: communityApi.study.answer.post,
+    onMutate: async (variables) => {
+      await queryClient.cancelQueries(studyAnswerKey as QueryFilters);
+      const curcomments = queryClient.getQueriesData(
+        studyAnswerKey as QueryFilters
+      );
+      queryClient.setQueryData(studyAnswerKey, (prev = []) => [
+        {
+          content: variables.content,
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
+          likes: 0,
+          dislikes: 0,
+          id: answers ? answers[0].id + 1 : 1,
+          member: {
+            profileImageUrl: imageUrl,
+            introduction,
+            id: userId,
+            nickname,
+          },
+        },
+        ...(prev as Answer[]),
+      ]);
+      return { curcomments };
+    },
   });
   return (
     <Study
