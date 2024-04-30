@@ -41,19 +41,17 @@ export default function StudyPage() {
   const { mutate: postComment } = useMutation({
     mutationKey: ["postStudyComment", id],
     mutationFn: communityApi.study.answer.post,
-    onMutate: async (variables) => {
+    onMutate: async ({ content }) => {
       await queryClient.cancelQueries(studyAnswerKey as QueryFilters);
-      const curcomments = queryClient.getQueriesData(
-        studyAnswerKey as QueryFilters
-      );
+      const curcomments = queryClient.getQueryData(studyAnswerKey);
       queryClient.setQueryData(studyAnswerKey, (prev = []) => [
         {
-          content: variables.content,
+          content,
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
           likes: 0,
           dislikes: 0,
-          id: answers ? answers[0].id + 1 : 1,
+          id: 1,
           member: {
             profileImageUrl: imageUrl,
             introduction,

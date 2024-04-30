@@ -17,7 +17,7 @@ export default function CommunityPage() {
     signInData: { userId, nickname, introduction, imageUrl },
   } = useSignInStore();
   const { id } = useParams();
-  const communityKey = ["getCommunity", id] as QueryFilters;
+  const communityKey = ["getCommunity", id];
   const communityAnswerKey = ["getCommunityAnswers", id];
 
   const [{ data: post }, { data: answers }] = useQueries({
@@ -37,9 +37,9 @@ export default function CommunityPage() {
     mutationKey: ["postCommunityComment", id],
     mutationFn: communityApi.answer.post,
     onMutate: async ({ content }) => {
-      await queryClient.cancelQueries(communityKey);
-      const curcomments = queryClient.getQueriesData(communityKey);
-      queryClient.setQueriesData(communityKey, (prev = []) => [
+      await queryClient.cancelQueries(communityAnswerKey as QueryFilters);
+      const curcomments = queryClient.getQueryData(communityAnswerKey);
+      queryClient.setQueryData(communityAnswerKey, (prev = []) => [
         {
           content,
           createdAt: new Date().toISOString(),

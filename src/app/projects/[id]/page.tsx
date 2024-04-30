@@ -44,9 +44,7 @@ export default function ProjectPage() {
     mutationFn: communityApi.project.answer.post,
     onMutate: async (variables) => {
       await queryClient.cancelQueries(projectAnswerKey as QueryFilters);
-      const curcomments = queryClient.getQueriesData(
-        projectAnswerKey as QueryFilters
-      );
+      const curcomments = queryClient.getQueryData(projectAnswerKey);
       queryClient.setQueryData(projectAnswerKey, (prev = []) => [
         {
           content: variables.content,
@@ -54,7 +52,7 @@ export default function ProjectPage() {
           updatedAt: new Date().toISOString(),
           likes: 0,
           dislikes: 0,
-          id: answers ? answers[0].id + 1 : 1,
+          id: 1,
           member: {
             profileImageUrl: imageUrl,
             introduction,
