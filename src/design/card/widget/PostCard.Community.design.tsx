@@ -1,5 +1,5 @@
 import { PostCardCommunityProps } from "@/interface";
-import { cn } from "@/util";
+import { Moment, cn } from "@/util";
 import { Link, useLocation } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import { chatApi } from "@/connection";
@@ -59,7 +59,7 @@ export default function PostCardCommunityDesign({
           <div className="flex flex-col">
             <div className="font-bold text-sm">{member?.nickname}</div>
             <div className="text-xs">{member?.introduction}</div>
-            <div className="text-xs">{createdAt}</div>
+            <div className="text-xs">{Moment.getDateFromNow(createdAt)}</div>
           </div>
         </div>
         <button

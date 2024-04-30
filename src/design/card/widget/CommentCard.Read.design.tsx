@@ -1,7 +1,7 @@
 import { CommentCardReadProps } from "@/interface";
-import { cn } from "@/util";
+import { Moment, cn } from "@/util";
 
-export default function CommentCardQuestionDesign({
+export default function CommentCardReadDesign({
   member,
   createdAt,
   content,
@@ -29,7 +29,9 @@ export default function CommentCardQuestionDesign({
 
   return (
     <div className={cn(container)}>
-      <div className="text-xxs text-bright-gray">{createdAt}</div>
+      <div className="text-xxs text-bright-gray">
+        {Moment.getDateFromNow(createdAt)}
+      </div>
       <div className="relative flex flex-row items-center pt-1.25 gap-2.5">
         <div className="w-9 h-9 rounded-full bg-black" />
         <div className="flex flex-col">
