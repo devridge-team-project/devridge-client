@@ -1,6 +1,6 @@
 import { PostCard, CommentCard } from "@/design";
 import { Answer, AnswerRequest, OnClick, Community } from "@/interface";
-import { Moment, cn } from "@/util";
+import { cn } from "@/util";
 export default function CommunityById({
   post,
   answers,
@@ -46,7 +46,7 @@ export default function CommunityById({
           id={post.id}
           title={post.title}
           content={post.content}
-          createdAt={Moment.getDateFromNow(post?.createdAt as string)}
+          createdAt={post.createdAt}
           likes={post.likes}
           scraps={post.scraps}
           views={post.views}

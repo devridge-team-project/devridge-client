@@ -1,6 +1,6 @@
 import { Button, PostCard } from "@/design";
 import { Community } from "@/interface";
-import { Moment, cn } from "@/util";
+import { cn } from "@/util";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Communities({ posts }: { posts?: Community[] }) {
@@ -51,7 +51,7 @@ export default function Communities({ posts }: { posts?: Community[] }) {
             id={post.id}
             title={post.title}
             content={post.content}
-            createdAt={Moment.getDateFromNow(post.createdAt)}
+            createdAt={post.createdAt}
             likes={post.likes}
             views={post.views}
             scraps={post.scraps}

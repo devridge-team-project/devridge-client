@@ -1,6 +1,9 @@
 import { useTransition, animated } from "react-spring";
 import { cn } from "@/util";
-import { useSignStore, useWidgetStore } from "@/shared";
+import { useEffect } from "react";
+import { userApi } from "@/connection";
+import { useQuery } from "@tanstack/react-query";
+import { useSignInStore, useWidgetStore } from "@/shared";
 import { Link } from "react-router-dom";
 import { links } from "./links";
 import { Button } from "../html";
@@ -13,7 +16,31 @@ interface OverlayProps {
 export default function Overlay({ isVisible }: OverlayProps) {
   const navigation = useNavigation();
   const { clearView } = useWidgetStore();
-  const { isSignIn } = useSignStore();
+  const {
+    setSignInData,
+    signInData: { isSignIn },
+  } = useSignInStore();
+  const { data: user, isSuccess } = useQuery({
+    queryKey: ["userDetails"],
+    queryFn: userApi.get,
+    enabled: isSignIn,
+  });
+
+  useEffect(() => {
+    if (isSuccess && user) {
+      const { id, nickname, introduction, occupation, imageUrl, skillIds } =
+        user;
+      setSignInData({
+        userId: id,
+        nickname,
+        introduction,
+        occupation,
+        imageUrl,
+        skillIds,
+      });
+    }
+  }, [user]);
+
   const container = {
     positions: "fixed top-0 right-0 z-50",
     sizes: "h-full",
@@ -40,7 +67,9 @@ export default function Overlay({ isVisible }: OverlayProps) {
           <div className={cn(body)}>
             <div className="text-xl font-bold ">카테고리</div>
             {links
-              .filter(({ isSignIn }) => !isSignIn || (isSignIn && isSignIn))
+              .filter(
+                ({ isLoggedIn }) => !isLoggedIn || (isLoggedIn && isSignIn)
+              )
               .map(({ name, href, icon }) => (
                 <Link
                   key={href}

@@ -1,27 +1,40 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-interface SignProps {
+interface SignInDataProps {
   isSignIn: boolean;
-  signIn: () => void;
-  signOut: () => void;
+  userId: number;
+  nickname: string;
+  occupation: string;
+  introduction: string;
+  imageUrl: string | null;
+  skillIds: number[];
 }
 
-export const useSignStore = create(
-  persist<SignProps>(
+interface SignInProps {
+  signInData: SignInDataProps;
+  setSignInData: (data: Partial<SignInDataProps>) => void;
+}
+
+export const useSignInStore = create(
+  persist<SignInProps>(
     (set) => ({
-      isSignIn: false,
-      signIn: () =>
-        set(() => ({
-          isSignIn: true,
-        })),
-      signOut: () =>
-        set(() => ({
-          isSignIn: false,
-        })),
+      signInData: {
+        userId: 0,
+        isSignIn: false,
+        nickname: "",
+        occupation: "",
+        introduction: "",
+        imageUrl: null,
+        skillIds: [],
+      },
+
+      setSignInData: (data) =>
+        set((state) => {
+          const newSignInData = { ...state.signInData, ...data };
+          return { ...state, signInData: newSignInData };
+        }),
     }),
-    {
-      name: "signInStore",
-    }
+    { name: "signInStore" }
   )
 );
 

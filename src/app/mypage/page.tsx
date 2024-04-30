@@ -1,9 +1,11 @@
 import { userApi } from "@/connection";
 import { useQuery } from "@tanstack/react-query";
 import { MyAccount } from "@/components";
-import { useSignStore } from "@/shared";
+import { useSignInStore } from "@/shared";
 export default function MyPage() {
-  const { isSignIn } = useSignStore();
+  const {
+    signInData: { isSignIn },
+  } = useSignInStore();
 
   const { data: user } = useQuery({
     queryKey: ["userDetails"],
